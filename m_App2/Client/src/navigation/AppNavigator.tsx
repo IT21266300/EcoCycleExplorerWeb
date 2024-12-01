@@ -69,6 +69,15 @@ export default function AppNavigator() {
             }} 
           />
           <Stack.Screen 
+            name="SignUpSuccess" 
+            component={LoginScreen}
+            options={{ 
+              headerTitle: '',
+              headerBackTitleVisible: false,
+              headerShadowVisible: false
+            }} 
+          />
+          <Stack.Screen 
             name="HomeScreen" 
             component={BottomTabView}
             options={{ headerShown: false }} 
