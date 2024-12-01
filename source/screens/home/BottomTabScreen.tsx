@@ -4,6 +4,7 @@ import React from 'react';
 import { useAppTheme } from '../../hooks/useAppTheme';
 import HomeTab from './tabs/HomeTab';
 import ProfileScreen from './tabs/ProfileScreen';
+import UserPreferencesScreen from '../routeSuggestions/UserPreferences';
 
 const Tab = createBottomTabNavigator();
 
@@ -29,6 +30,14 @@ const BottomTabScreen = () => {
         component={HomeTab}
         options={{
           tabBarLabel: 'Home',
+          tabBarIcon: ({color, size}) => <Home size={size} color={color} />,
+        }}
+      />
+      <Tab.Screen
+        name="UserPreferencesScreen"
+        component={UserPreferencesScreen}
+        options={{
+          tabBarLabel: 'UserPreferences',
           tabBarIcon: ({color, size}) => <Home size={size} color={color} />,
         }}
       />
