@@ -1,4 +1,4 @@
 export default {
   isDebug: true,
-  BaseUrl: 'https://api.taskbear.online',
+  BaseUrl: 'http://localhost:4000',
 };

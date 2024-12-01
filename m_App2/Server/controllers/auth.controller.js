@@ -49,8 +49,8 @@ export const registerUserHandler = expressAsyncHandler(async(req,res) => {
     })
 
     User.save().then(()=>{
-        res.status(200).send({ message: 'SUCCESS' });
+        return res.status(200).send({ message: 'SUCCESS' });
     }).catch((err)=>{
-        res.status(400).send({ message: err.message });
+        return res.status(400).send({ message: err.message });
     })
 });

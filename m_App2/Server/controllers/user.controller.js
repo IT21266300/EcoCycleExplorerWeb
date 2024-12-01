@@ -11,10 +11,14 @@ const router = express.Router();
 // @GET("/")
 export const getUser = expressAsyncHandler(async (req, res) => {
 
-      var user = await UserModel.findOne({ _id: req.user.id },
+      const user = await UserModel.findOne({ _id: req.user.id },
         'firstName lastName mobile email profile_pic roleId isVendor createdAt updatedAt',
       );
-      res.send(user);
+
+      if(!user){
+        return res.status(404).send({ message: 'User Not Found.'});
+      }
+      return res.send(user);
 });
 
 
