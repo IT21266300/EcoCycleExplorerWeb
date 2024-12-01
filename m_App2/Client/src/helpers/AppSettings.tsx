@@ -1,4 +1,4 @@
 export default {
   isDebug: true,
-  BaseUrl: 'http://localhost:4000',
+  BaseUrl: 'http://10.0.2.2:4000',
 };

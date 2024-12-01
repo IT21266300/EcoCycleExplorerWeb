@@ -24,6 +24,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
+app.get('/api/alive', (req, res) => {
+  res.status(200).json({ message: 'Server is alive!' });
+});
 
 // Database connection
 const PORT = process.env.PORT || 5000;
