@@ -4,7 +4,7 @@ import React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 
-const CardComponent = ({ title, amount, icon, backgroundColor = "#f5f5f5" }) => {
+const CardComponent = ({ title, amount, icon, backgroundColor = "#fff" }) => {
   return (
     <Box
       sx={{
