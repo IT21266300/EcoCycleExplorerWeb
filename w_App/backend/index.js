@@ -11,6 +11,7 @@ import multer from 'multer';
 
 // import routes
 // import routes from './routes/routes.js';
+import routes from './lib/routes.js'; 
 
 //configuration
 dotenv.config();
@@ -44,9 +45,10 @@ mongoose.connect(process.env.MONGODB_URI, {
   });
 
 // Routers
-// app.use('/api', routes);
+app.use('/api', routes);
 
 app.use((err, req, res, next) => {
   res.status(500).send({ message: err.message });
 });
+
 
