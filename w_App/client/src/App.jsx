@@ -7,8 +7,15 @@ import Sidebar from "./components/sidebar/Sidebar";
 import AppBarComponent from "./components/appbar/Appbar";
 import Home from "./pages/Dashboard/home";
 import SignIn from "./pages/SignIn";
+
 import UserManagement from "./pages/User_Management/UserManagement";
 import UserProfile from "./components/User/UserProfile/UserProfile";
+
+import AddDestination from "./pages/AddDestination";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Destinations from "./pages/Destinations";
+
 
 const DrawerHeader = styled("div")(({ theme }) => ({
   ...theme.mixins.toolbar,
@@ -33,17 +40,23 @@ const App = () => {
           path="*"
           element={
             isLoggedIn ? (
-              <Box sx={{ display: "flex" }}>
+              <Box sx={{ display: "flex", width: '100%' }}>
+                <ToastContainer />
                 <CssBaseline />
                 <AppBarComponent open={open} handleDrawerOpen={handleDrawerOpen} />
                 <Sidebar open={open} handleDrawerClose={handleDrawerClose} handleLogout={handleLogout} />
-                <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+                <Box component="main" sx={{ width: '100%', flexGrow: 1, p: 3 }}>
                   <DrawerHeader />
                   <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/dashboard" element={<Home />} />
+
                     <Route path="/user-management" element={<UserManagement />} />
                     <Route path="/user-management/profile/:id" element={<UserProfile />} />
+
+
+                    <Route path="/addDestination" element={<AddDestination />} />
+                    <Route path="/destinations" element={<Destinations />} />
 
                   </Routes>
                 </Box>

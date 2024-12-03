@@ -1,31 +1,47 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
-import { addDoc,collection, deleteDoc, doc, getDocs, updateDoc } from 'firebase/firestore';
-import { db } from '../firebase-config';
-
+import {
+  addDoc,
+  collection,
+  deleteDoc,
+  doc,
+  getDocs,
+  updateDoc,
+} from "firebase/firestore";
+import { db } from "../firebase-config";
+import { toast } from "react-toastify";
+import axios, { Axios } from "axios";
+import { useLocation, useNavigate, useNavigation } from "react-router-dom";
 
 export default function AddDestination() {
+  const navigate = useNavigate();
 
-  const [locationName, setLocationName] = useState("");
+  const [destination, setDestination] = useState("");
   const [latitude, setLatitude] = useState("");
   const [longitude, setLongitude] = useState("");
-  const [description, setDescription] = useState("")
+  const [description, setDescription] = useState("");
 
-  const desCollection = collection(db, "destinations");
-
-
-  const handleSubmit = async (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      await addDoc(desCollection, {locationName: locationName, latitude: latitude, longitude: longitude, description: description});
-      alert("Tourist Destination added successfully!");
-    } catch (error) {
-      console.error("Error adding document: ", error);
+      await axios.post("http://localhost:5000/api/destination/add", {
+        destination,
+        description,
+        latitude,
+        longitude,
+      });
+      toast.success("New data has been created successfully!", {
+        position: "bottom-right",
+      });
+      navigate("/");
+    } catch (err) {
+      console.log(err);
+      toast.error("err", { position: "bottom-right" });
     }
   };
 
   return (
-    <Box sx={{ width: "100%" }}>
+    <Box width="100%" sx={{ padding: "2rem" }}>
       <Box>
         <Typography variant="h4" sx={{ fontSize: "1.6rem" }}>
           Add New Destination
@@ -53,53 +69,98 @@ export default function AddDestination() {
         >
           <Typography sx={{ fontSize: "1rem" }}>Location Name</Typography>
           <TextField
-            name="locationName"
+            name="destination"
             label="Location Name"
             variant="outlined"
-            value={locationName}
-            onChange={(e) => {setLocationName(e.target.value)}}
+            value={destination}
+            onChange={(e) => {
+              setDestination(e.target.value);
+            }}
+          />
+        </Box>
+        <Box
+          sx={{
+            width: "100%",
+            gap: "0.5rem",
+            marginBottom: "1rem",
+          }}
+        >
+          <Typography>Location</Typography>
+          <Box sx={{display: 'flex', gap: '5rem'}}>
+            <Box
+              sx={{
+                width: "100%",
+                display: "flex",
+                justifyContent: "center",
+                gap: "0.5rem",
+                flexDirection: "column",
+                marginBottom: "1rem",
+              }}
+            >
+              <Typography>Latitude</Typography>
+              <TextField
+                id="outlined-basic"
+                label="Latitude"
+                variant="outlined"
+                name="latitude"
+                value={latitude}
+                onChange={(e) => {
+                  setLatitude(e.target.value);
+                }}
+              />
+            </Box>
+            <Box
+              sx={{
+                width: "100%",
+                display: "flex",
+                justifyContent: "center",
+                gap: "0.5rem",
+                flexDirection: "column",
+                marginBottom: "1rem",
+              }}
+            >
+              <Typography>Longitude</Typography>
+              <TextField
+                id="outlined-basic"
+                label="Longitude"
+                variant="outlined"
+                name="longitude"
+                value={longitude}
+                onChange={(e) => {
+                  setLongitude(e.target.value);
+                }}
+              />
+            </Box>
+          </Box>
+        </Box>
+        <Box
+          sx={{
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
+            gap: "0.5rem",
+            flexDirection: "column",
+            marginBottom: "1rem",
+          }}
+        >
+          <Typography>Description</Typography>
+          <TextField
+            id="outlined-multiline-static"
+            label="Description"
+            multiline
+            rows={5}
+            width="100%"
+            name="description"
+            value={description}
+            onChange={(e) => {
+              setDescription(e.target.value);
+            }}
           />
         </Box>
         <Box>
-          <Typography>Location</Typography>
-          <Box>
-            <Typography>Latitude</Typography>
-            <TextField
-              id="outlined-basic"
-              label="Outlined"
-              variant="outlined"
-              name="latitude"
-              value={latitude}
-              onChange={(e) => {setLatitude(e.target.value)}}
-            />
-          </Box>
-          <Box>
-            <Typography>Longitude</Typography>
-            <TextField
-              id="outlined-basic"
-              label="Outlined"
-              variant="outlined"
-              name="longitude"
-              value={longitude}
-              onChange={(e) => {setLongitude(e.target.value)}}
-            />
-          </Box>
-          <Box>
-            <Typography>Description</Typography>
-            <TextField
-              id="outlined-multiline-static"
-              label="Multiline"
-              multiline
-              rows={4}
-              width="100%"
-              name="description"
-              value={description}
-              onChange={(e) => {setDescription(e.target.value)}}
-            />
-          </Box>
-        </Box>
-        <Box>
-          <Button variant="contained" onClick={handleSubmit}>Upload Location</Button>
+          <Button variant="contained" onClick={submitHandler}>
+            Upload Location
+          </Button>
         </Box>
       </Box>
     </Box>
