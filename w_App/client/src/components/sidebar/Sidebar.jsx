@@ -80,6 +80,7 @@ const Sidebar = ({ open, handleDrawerClose, handleLogout }) => {
     { text: "Service Management", icon: <EngineeringIcon /> },
     { text: "User Management", icon: <PersonIcon /> },
     { text: "Admin Management", icon: <AdminPanelSettingsIcon /> },
+    { text: "Logout", icon: <AdminPanelSettingsIcon /> },
   ];
 
   return (

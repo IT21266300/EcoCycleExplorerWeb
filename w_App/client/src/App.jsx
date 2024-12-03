@@ -8,40 +8,48 @@ import AppBarComponent from "./components/appbar/Appbar";
 import Home from "./pages/Dashboard/home";
 import SignIn from "./pages/SignIn";
 import AddDestination from "./pages/AddDestination";
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Destinations from "./pages/Destinations";
-import NewStaff from "./pages/AddNewStaff"
+import NewStaff from "./pages/AddNewStaff";
+import { useAuth } from "./context/AuthContext";
 
 const DrawerHeader = styled("div")(({ theme }) => ({
   ...theme.mixins.toolbar,
 }));
 
 const App = () => {
+  const { isLoggedIn, logout } = useAuth();
   const [open, setOpen] = React.useState(false);
-  const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
 
   const handleDrawerOpen = () => setOpen(true);
   const handleDrawerClose = () => setOpen(false);
-  const handleLogout = () => {
-    localStorage.setItem("isLoggedIn", "false");
-    window.location.href = "/login";
-  };
 
   return (
     <Router>
+      <ToastContainer />
       <Routes>
+        {/* Public Route */}
         <Route path="/login" element={<SignIn />} />
-        <Route
-          path="*"
-          element={
-            isLoggedIn ? (
-              <Box sx={{ display: "flex", width: '100%' }}>
-                <ToastContainer />
+
+        {/* Protected Routes */}
+        {isLoggedIn ? (
+          <Route
+            path="*"
+            element={
+              <Box sx={{ display: "flex", width: "100%" }}>
                 <CssBaseline />
-                <AppBarComponent open={open} handleDrawerOpen={handleDrawerOpen} />
-                <Sidebar open={open} handleDrawerClose={handleDrawerClose} handleLogout={handleLogout} />
-                <Box component="main" sx={{ width: '100%', flexGrow: 1, p: 3 }}>
+                <AppBarComponent
+                  open={open}
+                  handleDrawerOpen={handleDrawerOpen}
+                  handleLogout={logout}
+                />
+                <Sidebar
+                  open={open}
+                  handleDrawerClose={handleDrawerClose}
+                  handleLogout={logout}
+                />
+                <Box component="main" sx={{ width: "100%", flexGrow: 1, p: 3 }}>
                   <DrawerHeader />
                   <Routes>
                     <Route path="/" element={<Home />} />
@@ -52,11 +60,11 @@ const App = () => {
                   </Routes>
                 </Box>
               </Box>
-            ) : (
-              <Navigate to="/login" replace />
-            )
-          }
-        />
+            }
+          />
+        ) : (
+          <Route path="*" element={<Navigate to="/login" replace />} />
+        )}
       </Routes>
     </Router>
   );
