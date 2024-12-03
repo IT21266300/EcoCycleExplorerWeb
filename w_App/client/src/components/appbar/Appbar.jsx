@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
 import React from "react";
 import { styled } from "@mui/material/styles";
 import MuiAppBar from "@mui/material/AppBar";
@@ -7,6 +5,7 @@ import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import MenuIcon from "@mui/icons-material/Menu";
+import Button from "@mui/material/Button";
 
 const AppBarStyled = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "open",
@@ -26,7 +25,7 @@ const AppBarStyled = styled(MuiAppBar, {
   }),
 }));
 
-const AppBarComponent = ({ open, handleDrawerOpen }) => {
+const AppBarComponent = ({ open, handleDrawerOpen, handleLogout }) => {
   return (
     <AppBarStyled position="fixed" open={open} sx={{ background: "#04bd4e" }}>
       <Toolbar>
@@ -39,9 +38,12 @@ const AppBarComponent = ({ open, handleDrawerOpen }) => {
         >
           <MenuIcon />
         </IconButton>
-        <Typography variant="h6" noWrap>
+        <Typography variant="h6" noWrap sx={{ flexGrow: 1 }}>
           EcoCycle Explorer
         </Typography>
+        <Button color="inherit" onClick={handleLogout}>
+          Logout
+        </Button>
       </Toolbar>
     </AppBarStyled>
   );

@@ -1,49 +1,61 @@
-/* eslint-disable no-unused-vars */
-
-import React, { useState } from 'react';
-import { 
-  Avatar, 
-  Button, 
-  CssBaseline, 
-  TextField, 
-  Paper, 
-  Box, 
-  Grid, 
-  Typography, 
-  createTheme, 
-  ThemeProvider 
-} from '@mui/material';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import { useNavigate } from 'react-router-dom';
-import backImage from '../assets/images/logo.jpeg';
+import React, { useState } from "react";
+import {
+  Avatar,
+  Button,
+  CssBaseline,
+  TextField,
+  Paper,
+  Box,
+  Grid,
+  Typography,
+  createTheme,
+  ThemeProvider,
+} from "@mui/material";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import { useNavigate } from "react-router-dom";
+import { signIn } from "../api/auth";
+import { useAuth } from "../context/AuthContext";
+import { saveToken } from "../utils/storage"; // Import saveToken
+import backImage from "../assets/images/logo.jpeg";
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#04bd4e',
+      main: "#04bd4e",
     },
   },
 });
 
-export default function SignIn() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+const SignIn = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const { login } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (email === 'admin@gmail.com' && password === '12345') {
-      localStorage.setItem('isLoggedIn', 'true');
-      navigate('/dashboard');
-    } else {
-      setError('Invalid email or password');
+
+    if (!email || !password) {
+      setError("Email and password are required");
+      return;
+    }
+
+    try {
+      const data = await signIn(email, password);
+      saveToken(data.token);
+      setError("");
+      login();
+      navigate("/dashboard");
+    } catch (err) {
+      const errorMessage = err.response?.data?.message || "Invalid credentials";
+      setError(errorMessage);
     }
   };
 
   return (
     <ThemeProvider theme={theme}>
-      <Grid container component="main" sx={{ minHeight: '100vh', width: '100vw' }}>
+      <Grid container component="main" sx={{ minHeight: "100vh", width: "100vw" }}>
         <CssBaseline />
         <Grid
           item
@@ -52,11 +64,11 @@ export default function SignIn() {
           md={6}
           sx={{
             backgroundImage: `url(${backImage})`,
-            backgroundRepeat: 'no-repeat',
+            backgroundRepeat: "no-repeat",
             backgroundColor: (t) =>
-              t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
+              t.palette.mode === "light" ? t.palette.grey[50] : t.palette.grey[900],
+            backgroundSize: "cover",
+            backgroundPosition: "center",
           }}
         />
         <Grid item xs={12} sm={6} md={6} component={Paper} elevation={6} square>
@@ -64,21 +76,18 @@ export default function SignIn() {
             sx={{
               my: 8,
               mx: 4,
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: 'primary.main' }}>
+            <Avatar sx={{ m: 1, bgcolor: "primary.main" }}>
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
-              EcoCycle Explorer
+              Sign In
             </Typography>
-            <Typography variant="subtitle1" color="text.secondary">
-              Sustainable Travel Management Platform
-            </Typography>
-            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1, width: '100%' }}>
+            <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1, width: "100%" }}>
               <TextField
                 margin="normal"
                 required
@@ -90,7 +99,7 @@ export default function SignIn() {
                 autoFocus
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                error={!!error}
+                aria-label="email"
               />
               <TextField
                 margin="normal"
@@ -103,14 +112,19 @@ export default function SignIn() {
                 autoComplete="current-password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                error={!!error}
-                helperText={error}
+                aria-label="password"
               />
+              {error && (
+                <Typography color="error" variant="body2" sx={{ mt: 1 }}>
+                  {error}
+                </Typography>
+              )}
               <Button
                 type="submit"
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
+                aria-label="sign-in"
               >
                 Sign In
               </Button>
@@ -120,4 +134,6 @@ export default function SignIn() {
       </Grid>
     </ThemeProvider>
   );
-}
+};
+
+export default SignIn;

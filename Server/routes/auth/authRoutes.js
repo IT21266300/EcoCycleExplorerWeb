@@ -3,7 +3,7 @@ import { generateTokenHandler, registerUserHandler, sendOtpForVerification, rese
 
 const router = express.Router();
 
-router.get('/token', generateTokenHandler);
+router.post('/token', generateTokenHandler);
 router.post('/register', registerUserHandler); 
 router.post('/verify-otp', sendOtpForVerification);
 router.post('/resend-otp', resendOtpForVerification);
