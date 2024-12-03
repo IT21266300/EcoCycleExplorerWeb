@@ -1,9 +1,9 @@
 import axiosInstance from "../services/axiosConfig";
 
-export const signIn = async (email, password) => {
+export const fetchUserProfile = async () => {
     try {
-      const response = await axiosInstance.post('/api/auth/token', { email, password });
-      return response.data;
+        const response = await axiosInstance.get('/api/user/user-details');
+        return response.data; 
     } catch (error) {
       throw error.response ? error.response.data : new Error('Network error');
     }
