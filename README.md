@@ -57,11 +57,11 @@ To develop an AI-driven mobile application to:
 
 ## Architectural Diagram
 
-*Insert the system overview diagram here.*  
 This diagram should highlight:
 - AI-driven route planning and optimization.
 - Real-time data feeds for weather, road conditions, and user health monitoring.
 - Features for voice navigation and hazard detection.
+- ![alt text](image.png)
 
 ---
 
@@ -85,8 +85,8 @@ The project uses the following technologies and tools:
 - **Kaggle Datasets**: For training AI models.
 
 ### Additional Tools:
-- **Firebase**: For database and authentication.
-- **Docker**: For containerization and deployment.
+- **Mongodb**: For database
+- 
 
 ---
 
@@ -100,4 +100,3 @@ The project uses the following technologies and tools:
 
 ---
 
-Feel free to customize further or provide additional details for the architectural diagram or other sections. Let me know if you need more enhancements!
