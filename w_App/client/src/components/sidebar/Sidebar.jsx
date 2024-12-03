@@ -18,6 +18,7 @@ import EngineeringIcon from "@mui/icons-material/Engineering";
 import PersonIcon from "@mui/icons-material/Person";
 import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
 import LogoutIcon from "@mui/icons-material/Logout";
+import { useNavigate } from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -67,6 +68,7 @@ const Drawer = styled(MuiDrawer)(({ theme, open }) => ({
 
 const Sidebar = ({ open, handleDrawerClose, handleLogout }) => {
   const theme = useTheme();
+  const navigate = useNavigate();
 
   // Define routes and their respective icons
   const routes = [
@@ -88,7 +90,7 @@ const Sidebar = ({ open, handleDrawerClose, handleLogout }) => {
       <Divider />
       <List>
         {routes.map(({ text, icon }) => (
-          <ListItem key={text} disablePadding sx={{ display: "block" }}>
+          <ListItem key={text} disablePadding sx={{ display: "block" }} onClick={() => navigate('/addDestination')}>
             <ListItemButton sx={{ justifyContent: open ? "initial" : "center" }}>
               <ListItemIcon sx={{ justifyContent: "center" }}>{icon}</ListItemIcon>
               <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
