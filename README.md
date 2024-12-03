@@ -1,11 +1,3 @@
-EcoCycle Explorer
-AI-Driven Approach for Sustainable Bicycle Tourism Development in Sri Lanka
-
-This project leverages artificial intelligence to enhance sustainable tourism through bicycle tourism in Sri Lanka. It focuses on optimizing routes, ensuring user safety, and promoting eco-friendly practices while integrating local cultural and environmental factors.
-
-
-Here’s a GitHub README file draft based on the "EcoCycle Explorer" project details from the presentation you provided:
-
 ---
 
 # EcoCycle Explorer
@@ -34,8 +26,8 @@ This project leverages artificial intelligence to enhance sustainable tourism th
 - Mr. Nelum Chathuranga Amarasena
 
 ### Team Members:
-- Bandara R.M.D.L (Team Leader)  
-- Bandara K.M.V.T  
+- Bandara K.M.V.T. (Team Leader)  
+- Bandara R.M.D.L.
 - Chandrasena H.M.K.G.J.K  
 - Kumara M.G.S.D  
 
@@ -57,11 +49,7 @@ To develop an AI-driven mobile application to:
 
 ## Architectural Diagram
 
-This diagram should highlight:
-- AI-driven route planning and optimization.
-- Real-time data feeds for weather, road conditions, and user health monitoring.
-- Features for voice navigation and hazard detection.
-- ![alt text](image.png)
+ ![alt text](image.png)
 
 ---
 
@@ -86,7 +74,7 @@ The project uses the following technologies and tools:
 
 ### Additional Tools:
 - **Mongodb**: For database
-- 
+  
 
 ---
 
