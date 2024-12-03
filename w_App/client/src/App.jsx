@@ -7,10 +7,9 @@ import Sidebar from "./components/sidebar/Sidebar";
 import AppBarComponent from "./components/appbar/Appbar";
 import Home from "./pages/Dashboard/home";
 import SignIn from "./pages/SignIn";
-
+import UserProfileTesting from "./pages/Profile";
 import UserManagement from "./pages/User_Management/UserManagement";
 import UserProfile from "./components/User/UserProfile/UserProfile";
-
 import AddDestination from "./pages/AddDestination";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -36,6 +35,7 @@ const App = () => {
       <Routes>
         {/* Public Route */}
         <Route path="/login" element={<SignIn />} />
+       
 
         {/* Protected Routes */}
         {isLoggedIn ? (
@@ -59,18 +59,12 @@ const App = () => {
                   <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/dashboard" element={<Home />} />
-
+                    <Route path="/profile" element={<UserProfileTesting />} /> 
                     <Route path="/user-management" element={<UserManagement />} />
                     <Route path="/user-management/profile/:id" element={<UserProfile />} />
-
-
                     <Route path="/addDestination" element={<AddDestination />} />
                     <Route path="/destinations" element={<Destinations />} />
-
                     <Route path="/addNewStaff" element={<NewStaff />} />
-
-
-
                   </Routes>
                 </Box>
               </Box>
