@@ -1,7 +1,6 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
 import React from "react";
 import { styled, useTheme } from "@mui/material/styles";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
@@ -20,7 +19,6 @@ import EngineeringIcon from "@mui/icons-material/Engineering";
 import PersonIcon from "@mui/icons-material/Person";
 import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
 import LogoutIcon from "@mui/icons-material/Logout";
-import { useNavigate } from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -42,7 +40,7 @@ const closedMixin = (theme) => ({
   width: `calc(${theme.spacing(7)} + 1px)`,
   [theme.breakpoints.up("sm")]: {
     width: `calc(${theme.spacing(8)} + 1px)`,
-  },
+  }
 });
 
 const DrawerHeader = styled("div")(({ theme }) => ({
@@ -70,9 +68,10 @@ const Drawer = styled(MuiDrawer)(({ theme, open }) => ({
 
 const Sidebar = ({ open, handleDrawerClose, handleLogout }) => {
   const theme = useTheme();
+
   const navigate = useNavigate();
 
-  // Define routes and their respective icons
+
   const routes = [
     { text: "Dashboard", icon: <DashboardIcon />, path: "/" },
     { text: "Route Planner", icon: <RouteIcon />, path: "/route-planner" },
@@ -80,7 +79,7 @@ const Sidebar = ({ open, handleDrawerClose, handleLogout }) => {
     { text: "Service Management", icon: <EngineeringIcon />, path: "/service-management" },
     { text: "User Management", icon: <PersonIcon />, path: "/user-management" },
     { text: "Admin Management", icon: <AdminPanelSettingsIcon />, path: "/admin-management" },
-    { text: "Logout", icon: <AdminPanelSettingsIcon /> },
+  
   ];
 
   return (
@@ -92,9 +91,14 @@ const Sidebar = ({ open, handleDrawerClose, handleLogout }) => {
       </DrawerHeader>
       <Divider />
       <List>
-        {routes.map(({ text, icon }) => (
-          <ListItem key={text} disablePadding sx={{ display: "block" }} onClick={() => navigate('/addDestination')}>
-            <ListItemButton sx={{ justifyContent: open ? "initial" : "center" }}>
+
+        {routes.map(({ text, icon, path }) => (
+          <ListItem key={text} disablePadding sx={{ display: "block" }}>
+            <ListItemButton
+              sx={{ justifyContent: open ? "initial" : "center" }}
+              onClick={() => navigate(path)} // Navigate to the route
+            >
+
               <ListItemIcon sx={{ justifyContent: "center" }}>{icon}</ListItemIcon>
               <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
             </ListItemButton>
