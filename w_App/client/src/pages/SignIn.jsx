@@ -31,7 +31,7 @@ export default function SignIn() {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     if (email === 'admin@gmail.com' && password === '12345') {
       localStorage.setItem('isLoggedIn', 'true');
