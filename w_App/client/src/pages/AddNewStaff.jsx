@@ -1,42 +1,40 @@
 import React, { useState } from 'react';
-import { 
-  Avatar, 
-  Button, 
-  CssBaseline, 
-  TextField, 
-  Paper, 
-  Box, 
-  Grid, 
-  Typography, 
-  createTheme, 
-  ThemeProvider 
-} from '@mui/material';
-import axios from 'axios';
+import { ThemeProvider } from '@mui/material/styles';
+import { Grid, CssBaseline, Paper, Box, TextField, Button, Typography, Avatar, createTheme,  FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import { useNavigate } from 'react-router-dom';
-import backImage from '../assets/images/logo.jpeg';
+import axios from 'axios';
+// import theme from './theme'; // Assuming you have a theme.js file
 
 const theme = createTheme({
-  palette: {
-    primary: {
-      main: '#04bd4e',
+    palette: {
+      primary: {
+        main: '#04bd4e',
+      },
     },
-  },
-});
+  });
 
-const SignIn = () => {
+const AddNewStaff = () => {
+  const [name, setName] = useState('');
+  const [employeeType, setEmployeeType] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post('/api/staff/signin', { email, password });
-      // Handle successful sign-in (e.g., store token, redirect)
-      console.log(response.data);
+      await axios.post('/api/staff/signup', { name, employeeType, email, password });
+      setSuccess('Staff member added successfully');
+      setError('');
+      // Clear form fields
+      setName('');
+      setEmployeeType('');
+      setEmail('');
+      setPassword('');
     } catch (err) {
-      setError('Invalid credentials');
+      setError('Failed to add staff member');
+      setSuccess('');
     }
   };
 
@@ -50,7 +48,7 @@ const SignIn = () => {
           sm={6}
           md={6}
           sx={{
-            backgroundImage: `url(${backImage})`,
+            // backgroundImage: `url(${backImage})`,
             backgroundRepeat: 'no-repeat',
             backgroundColor: (t) =>
               t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
@@ -68,17 +66,40 @@ const SignIn = () => {
               alignItems: 'center',
             }}
           >
-              <Avatar sx={{ m: 1, bgcolor: 'primary.main' }}>
+            <Avatar sx={{ m: 1, bgcolor: 'primary.main' }}>
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
-              EcoCycle Explorer
+              Add New Staff
             </Typography>
-            <Typography variant="subtitle1" color="text.secondary">
-              Sustainable Travel Management Platform
-            </Typography>
-           
             <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1, width: '100%' }}>
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="name"
+                label="Name"
+                name="name"
+                autoComplete="name"
+                autoFocus
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+              <FormControl fullWidth margin="normal">
+                <InputLabel id="employeeType-label">Employee Type</InputLabel>
+                <Select
+                  labelId="employeeType-label"
+                  id="employeeType"
+                  value={employeeType}
+                  label="Employee Type"
+                  onChange={(e) => setEmployeeType(e.target.value)}
+                >
+                  <MenuItem value="admin">Admin</MenuItem>
+                  <MenuItem value="staff member">Staff Member</MenuItem>
+                  <MenuItem value="medical officer">Medical Officer</MenuItem>
+                  <MenuItem value="support staff">Support Staff</MenuItem>
+                </Select>
+              </FormControl>
               <TextField
                 margin="normal"
                 required
@@ -87,7 +108,6 @@ const SignIn = () => {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
-                autoFocus
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -108,13 +128,18 @@ const SignIn = () => {
                   {error}
                 </Typography>
               )}
+              {success && (
+                <Typography color="success" variant="body2">
+                  {success}
+                </Typography>
+              )}
               <Button
                 type="submit"
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
               >
-                Sign In
+                Add Staff
               </Button>
             </Box>
           </Box>
@@ -124,4 +149,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default AddNewStaff;

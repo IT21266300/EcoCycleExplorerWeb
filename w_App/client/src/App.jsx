@@ -11,6 +11,7 @@ import AddDestination from "./pages/AddDestination";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Destinations from "./pages/Destinations";
+import NewStaff from "./pages/AddNewStaff"
 
 const DrawerHeader = styled("div")(({ theme }) => ({
   ...theme.mixins.toolbar,
@@ -47,6 +48,7 @@ const App = () => {
                     <Route path="/dashboard" element={<Home />} />
                     <Route path="/addDestination" element={<AddDestination />} />
                     <Route path="/destinations" element={<Destinations />} />
+                    <Route path="/addNewStaff" element={<NewStaff />} />
                   </Routes>
                 </Box>
               </Box>
