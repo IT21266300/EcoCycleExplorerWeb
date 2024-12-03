@@ -8,7 +8,7 @@ import {
   getDocs,
   updateDoc,
 } from "firebase/firestore";
-import { db } from "../firebase-config";
+import { db } from "../../firebase-config";
 import { toast } from "react-toastify";
 import axios, { Axios } from "axios";
 import { useLocation, useNavigate, useNavigation } from "react-router-dom";

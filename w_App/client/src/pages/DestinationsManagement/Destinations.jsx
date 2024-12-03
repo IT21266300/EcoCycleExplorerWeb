@@ -1,30 +1,32 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Button, Container, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import axios from "axios";
-import ActionButton from "../components/actions/actionButton";
+import ActionButton from "../../components/actions/ActionButton";
+import { useNavigate } from "react-router-dom";
 
 export default function Destinations() {
+  const navigate = useNavigate();
+
   const [destinations, setDestinations] = useState([]);
 
-useEffect(() => {
-  const fetchData = async () => {
-    try {
-      const result = await axios.get("http://localhost:5000/api/destination");
-      
-      // Set the destination data correctly
-      setDestinations(result.data);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const result = await axios.get("http://localhost:5000/api/destination");
 
-      // Log the destination data to verify
-      console.log(result.data);
-    } catch (err) {
-      console.log(err.message);
-    }
-  };
+        // Set the destination data correctly
+        setDestinations(result.data);
 
-  fetchData();
-}, []);
+        // Log the destination data to verify
+        console.log(result.data);
+      } catch (err) {
+        console.log(err.message);
+      }
+    };
 
+    fetchData();
+  }, []);
 
   const columns = [
     {
@@ -51,19 +53,18 @@ useEffect(() => {
 
   columns.push({
     field: "action",
-    headerName: "Actions",
+    headerName: "View",
     flex: 0.2,
     sortable: false,
     filterable: false,
     renderCell: (params) => (
       <Box>
-        <ActionButton />
+        <Button variant="contained">More ..</Button>
       </Box>
     ),
   });
 
   let rows = {};
-
 
   rows = destinations.map((row, x) => ({
     id: x + 1,
@@ -75,10 +76,46 @@ useEffect(() => {
   }));
 
   return (
-    <Box>
+    <Container maxWidth="xl" sx={{ paddingY: "16px" }}>
       {/* header */}
-      <Box>
-        <Typography>Destinations</Typography>
+      <Box
+        sx={{
+          marginBottom: "24px",
+          textAlign: "start",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <Box>
+          <Typography
+            variant="h4"
+            sx={{
+              fontWeight: "bold",
+              marginBottom: "8px",
+              color: "#333",
+            }}
+          >
+            Destinations Management
+          </Typography>
+          <Typography
+            variant="body1"
+            sx={{
+              color: "#666",
+            }}
+          >
+            Manage Destinations Efficiently.
+          </Typography>
+        </Box>
+        <Box>
+          <Button
+            variant="contained"
+            sx={{ background: "#04bd4e" }}
+            onClick={() => navigate("/addDestination")}
+          >
+            Add New Destination
+          </Button>
+        </Box>
       </Box>
 
       {/* content */}
@@ -141,6 +178,6 @@ useEffect(() => {
           </Box>
         </Box>
       </Box>
-    </Box>
+    </Container>
   );
 }

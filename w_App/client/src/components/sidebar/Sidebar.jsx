@@ -19,8 +19,9 @@ import EngineeringIcon from "@mui/icons-material/Engineering";
 import PersonIcon from "@mui/icons-material/Person";
 import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
 import LogoutIcon from "@mui/icons-material/Logout";
+import BeachAccessIcon from '@mui/icons-material/BeachAccess';
 
-const drawerWidth = 240;
+const drawerWidth = 280;
 
 const openedMixin = (theme) => ({
   width: drawerWidth,
@@ -74,9 +75,10 @@ const Sidebar = ({ open, handleDrawerClose, handleLogout }) => {
 
   const routes = [
     { text: "Dashboard", icon: <DashboardIcon />, path: "/" },
-    { text: "Route Planner", icon: <RouteIcon />, path: "/route-planner" },
+    { text: "Route Planner", icon: <RouteIcon />, path: "/routePlanner" },
     { text: "Hotel Management", icon: <HotelIcon />, path: "/hotel-management" },
     { text: "Service Management", icon: <EngineeringIcon />, path: "/service-management" },
+    { text: "Destination Management", icon: <BeachAccessIcon />, path: "/destinations" },
     { text: "User Management", icon: <PersonIcon />, path: "/user-management" },
     { text: "Admin Management", icon: <AdminPanelSettingsIcon />, path: "/admin-management" },
     { text: "Staff Management", icon: <PersonIcon />, path: "/addNewStaff" },

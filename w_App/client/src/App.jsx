@@ -10,12 +10,14 @@ import SignIn from "./pages/SignIn";
 import UserProfileTesting from "./pages/Profile";
 import UserManagement from "./pages/User_Management/UserManagement";
 import UserProfile from "./components/User/UserProfile/UserProfile";
-import AddDestination from "./pages/AddDestination";
+import AddDestination from "./pages/DestinationsManagement/AddDestination";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Destinations from "./pages/Destinations";
+// import Destinations from "./pages/Destinations";
+import Destinations from "./pages/DestinationsManagement/Destinations";
 import NewStaff from "./pages/AddNewStaff";
 import { useAuth } from "./context/AuthContext";
+import RoutePlanner from "./pages/RoutePlanner/RoutePlanner";
 
 
 const DrawerHeader = styled("div")(({ theme }) => ({
@@ -62,8 +64,11 @@ const App = () => {
                     <Route path="/profile" element={<UserProfileTesting />} /> 
                     <Route path="/user-management" element={<UserManagement />} />
                     <Route path="/user-management/profile/:id" element={<UserProfile />} />
-                    <Route path="/addDestination" element={<AddDestination />} />
+
+                    <Route path="/routePlanner" element={<RoutePlanner />} />
                     <Route path="/destinations" element={<Destinations />} />
+                    <Route path="/addDestination" element={<AddDestination />} />
+
                     <Route path="/addNewStaff" element={<NewStaff />} />
                   </Routes>
                 </Box>
