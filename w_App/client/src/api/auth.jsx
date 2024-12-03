@@ -8,3 +8,17 @@ export const signIn = async (email, password) => {
       throw error.response ? error.response.data : new Error('Network error');
     }
 };
+
+export const signUp = async (name, employeeType, email, password) => {
+  try {
+    const response = await axiosInstance.post("/api/auth/register", {
+      name,
+      employeeType,
+      email,
+      password,
+    });
+    return response.data; 
+  } catch (error) {
+    throw error.response ? error.response.data : new Error("Network error");
+  }
+};
