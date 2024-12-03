@@ -1,7 +1,6 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
 import React from "react";
 import { styled, useTheme } from "@mui/material/styles";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
@@ -41,7 +40,7 @@ const closedMixin = (theme) => ({
   width: `calc(${theme.spacing(7)} + 1px)`,
   [theme.breakpoints.up("sm")]: {
     width: `calc(${theme.spacing(8)} + 1px)`,
-  },
+  }
 });
 
 const DrawerHeader = styled("div")(({ theme }) => ({
@@ -69,15 +68,15 @@ const Drawer = styled(MuiDrawer)(({ theme, open }) => ({
 
 const Sidebar = ({ open, handleDrawerClose, handleLogout }) => {
   const theme = useTheme();
+  const navigate = useNavigate(); // Initialize navigation hook
 
-  // Define routes and their respective icons
   const routes = [
-    { text: "Dashboard", icon: <DashboardIcon /> },
-    { text: "Route Planner", icon: <RouteIcon /> },
-    { text: "Hotel Management", icon: <HotelIcon /> },
-    { text: "Service Management", icon: <EngineeringIcon /> },
-    { text: "User Management", icon: <PersonIcon /> },
-    { text: "Admin Management", icon: <AdminPanelSettingsIcon /> },
+    { text: "Dashboard", icon: <DashboardIcon />, path: "/" },
+    { text: "Route Planner", icon: <RouteIcon />, path: "/route-planner" },
+    { text: "Hotel Management", icon: <HotelIcon />, path: "/hotel-management" },
+    { text: "Service Management", icon: <EngineeringIcon />, path: "/service-management" },
+    { text: "User Management", icon: <PersonIcon />, path: "/user-management" },
+    { text: "Admin Management", icon: <AdminPanelSettingsIcon />, path: "/admin-management" },
   ];
 
   return (
@@ -89,9 +88,12 @@ const Sidebar = ({ open, handleDrawerClose, handleLogout }) => {
       </DrawerHeader>
       <Divider />
       <List>
-        {routes.map(({ text, icon }) => (
+        {routes.map(({ text, icon, path }) => (
           <ListItem key={text} disablePadding sx={{ display: "block" }}>
-            <ListItemButton sx={{ justifyContent: open ? "initial" : "center" }}>
+            <ListItemButton
+              sx={{ justifyContent: open ? "initial" : "center" }}
+              onClick={() => navigate(path)} // Navigate to the route
+            >
               <ListItemIcon sx={{ justifyContent: "center" }}>{icon}</ListItemIcon>
               <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
             </ListItemButton>
