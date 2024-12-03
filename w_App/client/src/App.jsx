@@ -7,7 +7,7 @@ import Sidebar from "./components/sidebar/Sidebar";
 import AppBarComponent from "./components/appbar/Appbar";
 import Home from "./pages/Dashboard/home";
 import SignIn from "./pages/SignIn";
-import UserProfile2 from "./pages/Profile";
+import UserProfileTesting from "./pages/Profile";
 import UserManagement from "./pages/User_Management/UserManagement";
 import UserProfile from "./components/User/UserProfile/UserProfile";
 import AddDestination from "./pages/AddDestination";
@@ -58,7 +58,7 @@ const App = () => {
                   <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/dashboard" element={<Home />} />
-                    <Route path="/profile" element={<UserProfile2 />} /> 
+                    <Route path="/profile" element={<UserProfileTesting />} /> 
                     <Route path="/user-management" element={<UserManagement />} />
                     <Route path="/user-management/profile/:id" element={<UserProfile />} />
                     <Route path="/addDestination" element={<AddDestination />} />
