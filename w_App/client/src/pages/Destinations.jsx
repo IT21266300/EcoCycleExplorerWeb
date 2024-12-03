@@ -2,25 +2,29 @@ import { Box, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import axios from "axios";
+import ActionButton from "../components/actions/actionButton";
 
 export default function Destinations() {
-//   const [destinations, setDestinations] = useState([]);
+  const [destinations, setDestinations] = useState([]);
 
-  let destinations = {}
+useEffect(() => {
+  const fetchData = async () => {
+    try {
+      const result = await axios.get("http://localhost:5000/api/destination");
+      
+      // Set the destination data correctly
+      setDestinations(result.data);
 
-    useEffect(() => {
-      const fetchData = async () => {
-        try {
-          const result = await axios.get("http://localhost:5000/api/destination");
-        //   setDestinations(result);
-        destinations = result.data
-          console.log(destinations);
-        } catch (err) {
-          console.log(err.message);
-        }
-      };
-      fetchData();
-    }, []);
+      // Log the destination data to verify
+      console.log(result.data);
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
+  fetchData();
+}, []);
+
 
   const columns = [
     {
@@ -31,7 +35,7 @@ export default function Destinations() {
     {
       field: "destination",
       headerName: "Destination",
-      flex: 0.1,
+      flex: 0.5,
     },
     {
       field: "latitude",
@@ -41,34 +45,34 @@ export default function Destinations() {
     {
       field: "longitude",
       headerName: "Longitude",
-      flex: 0.3,
+      flex: 0.5,
     },
   ];
 
   columns.push({
     field: "action",
     headerName: "Actions",
-    flex: 0.5,
+    flex: 0.2,
     sortable: false,
     filterable: false,
     renderCell: (params) => (
       <Box>
-        {/* <ActionButton handleClick={handleClick} params={params} open={open} /> */}
-        sfsd
+        <ActionButton />
       </Box>
     ),
   });
 
   let rows = {};
 
-//   rows = destinations.map((row, x) => ({
-//     id: x + 1,
-//     mongoID: row._id,
-//     destination: row.destination,
-//     description: row.description,
-//     latitude: row.latitude,
-//     longitude: row.longitude,
-//   }));
+
+  rows = destinations.map((row, x) => ({
+    id: x + 1,
+    mongoID: row._id,
+    destination: row.destination,
+    description: row.description,
+    latitude: row.latitude,
+    longitude: row.longitude,
+  }));
 
   return (
     <Box>
