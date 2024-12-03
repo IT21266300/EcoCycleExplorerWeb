@@ -1,5 +1,3 @@
----
-
 # EcoCycle Explorer
 
 **AI-Driven Approach for Sustainable Bicycle Tourism Development in Sri Lanka**
@@ -29,7 +27,7 @@ This project leverages artificial intelligence to enhance sustainable tourism th
 - Bandara K.M.V.T. (Team Leader)  
 - Bandara R.M.D.L.
 - Chandrasena H.M.K.G.J.K  
-- Kumara M.G.S.D  
+- Kumara M.G.S.D   
 
 ### Objective:
 To develop an AI-driven mobile application to:
