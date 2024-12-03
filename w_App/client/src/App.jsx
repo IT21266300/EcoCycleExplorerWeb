@@ -35,6 +35,7 @@ const App = () => {
       <Routes>
         {/* Public Route */}
         <Route path="/login" element={<SignIn />} />
+        <Route path="/addNewStaff" element={<NewStaff />} />
 
         {/* Protected Routes */}
         {isLoggedIn ? (
@@ -63,11 +64,6 @@ const App = () => {
                     <Route path="/user-management/profile/:id" element={<UserProfile />} />
                     <Route path="/addDestination" element={<AddDestination />} />
                     <Route path="/destinations" element={<Destinations />} />
-
-                    <Route path="/addNewStaff" element={<NewStaff />} />
-
-
-
                   </Routes>
                 </Box>
               </Box>

@@ -1,46 +1,70 @@
-import React, { useState } from 'react';
-import { ThemeProvider } from '@mui/material/styles';
-import { Grid, CssBaseline, Paper, Box, TextField, Button, Typography, Avatar, createTheme,  FormControl, InputLabel, Select, MenuItem } from '@mui/material';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import axios from 'axios';
-// import theme from './theme'; // Assuming you have a theme.js file
+import React, { useState } from "react";
+import {
+  ThemeProvider,
+  Grid,
+  CssBaseline,
+  Paper,
+  Box,
+  TextField,
+  Button,
+  Typography,
+  Avatar,
+  createTheme,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+} from "@mui/material";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import { signUp } from "../api/auth";
 
 const theme = createTheme({
-    palette: {
-      primary: {
-        main: '#04bd4e',
-      },
+  palette: {
+    primary: {
+      main: "#04bd4e",
     },
-  });
+  },
+});
 
 const AddNewStaff = () => {
-  const [name, setName] = useState('');
-  const [employeeType, setEmployeeType] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
+  const [name, setName] = useState("");
+  const [employeeType, setEmployeeType] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    // Basic validation
+    if (!name || !employeeType || !email || !password) {
+      setError("All fields are required");
+      setSuccess("");
+      return;
+    }
+
     try {
-      await axios.post('/api/staff/signup', { name, employeeType, email, password });
-      setSuccess('Staff member added successfully');
-      setError('');
+      const data = await signUp(name, employeeType, email, password); // Call API
+      setSuccess("Staff member added successfully");
+      setError("");
+
       // Clear form fields
-      setName('');
-      setEmployeeType('');
-      setEmail('');
-      setPassword('');
+      setName("");
+      setEmployeeType("");
+      setEmail("");
+      setPassword("");
     } catch (err) {
-      setError('Failed to add staff member');
-      setSuccess('');
+      const errorMessage =
+        err.message || "Failed to add staff member. Please try again.";
+      setError(errorMessage);
+      setSuccess("");
     }
   };
 
   return (
     <ThemeProvider theme={theme}>
-      <Grid container component="main" sx={{ minHeight: '100vh', width: '100vw' }}>
+      <Grid container component="main" sx={{ minHeight: "100vh", width: "100vw" }}>
         <CssBaseline />
         <Grid
           item
@@ -48,12 +72,11 @@ const AddNewStaff = () => {
           sm={6}
           md={6}
           sx={{
-            // backgroundImage: `url(${backImage})`,
-            backgroundRepeat: 'no-repeat',
+            backgroundRepeat: "no-repeat",
             backgroundColor: (t) =>
-              t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
+              t.palette.mode === "light" ? t.palette.grey[50] : t.palette.grey[900],
+            backgroundSize: "cover",
+            backgroundPosition: "center",
           }}
         />
         <Grid item xs={12} sm={6} md={6} component={Paper} elevation={6} square>
@@ -61,18 +84,18 @@ const AddNewStaff = () => {
             sx={{
               my: 8,
               mx: 4,
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: 'primary.main' }}>
+            <Avatar sx={{ m: 1, bgcolor: "primary.main" }}>
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
               Add New Staff
             </Typography>
-            <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1, width: '100%' }}>
+            <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1, width: "100%" }}>
               <TextField
                 margin="normal"
                 required
@@ -129,7 +152,7 @@ const AddNewStaff = () => {
                 </Typography>
               )}
               {success && (
-                <Typography color="success" variant="body2">
+                <Typography color="success.main" variant="body2">
                   {success}
                 </Typography>
               )}
