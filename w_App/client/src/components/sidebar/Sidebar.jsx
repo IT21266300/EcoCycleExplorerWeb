@@ -74,12 +74,12 @@ const Sidebar = ({ open, handleDrawerClose, handleLogout }) => {
 
   // Define routes and their respective icons
   const routes = [
-    { text: "Dashboard", icon: <DashboardIcon /> },
-    { text: "Route Planner", icon: <RouteIcon /> },
-    { text: "Hotel Management", icon: <HotelIcon /> },
-    { text: "Service Management", icon: <EngineeringIcon /> },
-    { text: "User Management", icon: <PersonIcon /> },
-    { text: "Admin Management", icon: <AdminPanelSettingsIcon /> },
+    { text: "Dashboard", icon: <DashboardIcon />, path: "/" },
+    { text: "Route Planner", icon: <RouteIcon />, path: "/route-planner" },
+    { text: "Hotel Management", icon: <HotelIcon />, path: "/hotel-management" },
+    { text: "Service Management", icon: <EngineeringIcon />, path: "/service-management" },
+    { text: "User Management", icon: <PersonIcon />, path: "/user-management" },
+    { text: "Admin Management", icon: <AdminPanelSettingsIcon />, path: "/admin-management" },
     { text: "Logout", icon: <AdminPanelSettingsIcon /> },
   ];
 
