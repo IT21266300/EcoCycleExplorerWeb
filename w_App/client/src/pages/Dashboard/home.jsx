@@ -4,6 +4,8 @@ import { Typography, Box } from "@mui/material";
 import CardRow from "./CardRow";
 import MonthlyProgress from "../../components/Monthly_pogress_Chart/MonthlyProgressChart";
 import CustomerFeedbackList from "../../components/HomeCustomerFeedbackList/HomeCustomerFeedbackList";
+import HotelList from "../../components/HomeTopHotels/TopHotels";
+import ServiceStationList from "../../components/TopServiceStations/TopServiceStations";
 
 
 export default function Home() {
@@ -82,6 +84,51 @@ export default function Home() {
         <CustomerFeedbackList />
       </Box>
       </Box>
+
+
+      {/* Right Side: Top Visiting Hotels and Service Stations */}
+      <Box
+        sx={{
+          marginTop:"20px",
+          flex: 3,
+          backgroundColor: "#fff",
+          borderRadius: "8px",
+          padding: "16px",
+          boxShadow: "0px 1px 3px rgba(0,0,0,0.2)",
+          minHeight: "300px", 
+          display: "flex", 
+          gap: "16px", 
+        }}
+      >
+        {/* Left: Top Visiting Hotels */}
+        <Box
+          sx={{
+            flex: 1, // Equal width
+            backgroundColor: "#f9f9f9",
+            borderRadius: "8px",
+            padding: "8px",
+            boxShadow: "0px 1px 3px rgba(0,0,0,0.1)",
+          }}
+        >
+          <HotelList />
+        </Box>
+
+        {/* Right: Service Stations */}
+        <Box
+          sx={{
+            flex: 1, // Equal width
+            backgroundColor: "#f9f9f9",
+            borderRadius: "8px",
+            padding: "8px",
+            boxShadow: "0px 1px 3px rgba(0,0,0,0.1)",
+          }}
+        >
+          <ServiceStationList />
+        </Box>
+      </Box>
+
+
+    
     </Box>
   );
 }
