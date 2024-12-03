@@ -7,6 +7,7 @@ import Sidebar from "./components/sidebar/Sidebar";
 import AppBarComponent from "./components/appbar/Appbar";
 import Home from "./pages/Dashboard/home";
 import SignIn from "./pages/SignIn";
+import UserProfile from "./pages/Profile";
 import AddDestination from "./pages/AddDestination";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -54,6 +55,7 @@ const App = () => {
                   <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/dashboard" element={<Home />} />
+                    <Route path="/profile" element={<UserProfile />} /> 
                     <Route path="/addDestination" element={<AddDestination />} />
                     <Route path="/destinations" element={<Destinations />} />
                     <Route path="/addNewStaff" element={<NewStaff />} />
