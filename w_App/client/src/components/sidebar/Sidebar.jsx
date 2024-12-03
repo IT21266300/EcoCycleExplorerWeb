@@ -79,6 +79,7 @@ const Sidebar = ({ open, handleDrawerClose, handleLogout }) => {
     { text: "Service Management", icon: <EngineeringIcon />, path: "/service-management" },
     { text: "User Management", icon: <PersonIcon />, path: "/user-management" },
     { text: "Admin Management", icon: <AdminPanelSettingsIcon />, path: "/admin-management" },
+    { text: "Staff Management", icon: <PersonIcon />, path: "/addNewStaff" },
   
   ];
 
