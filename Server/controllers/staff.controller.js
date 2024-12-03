@@ -4,7 +4,7 @@ import expressAsyncHandler from 'express-async-handler';
 import jwt from 'jsonwebtoken';
 
 // Models
-import StaffModel from './StaffModel.js';
+import StaffModel from '../Models/StaffModel.js';
 
 const router = express.Router();
 
