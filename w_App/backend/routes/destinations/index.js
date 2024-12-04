@@ -9,7 +9,7 @@ router.route("/add").post((req,res)=>{
 
     const destination = req.body.destination;
     const description = req.body.description;
-    const latitude = req.body.longitude;
+    const latitude = req.body.latitude;
     const longitude = req.body.longitude;
 
     const newDestination = new Destination({
