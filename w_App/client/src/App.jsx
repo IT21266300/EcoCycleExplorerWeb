@@ -19,6 +19,7 @@ import NewStaff from "./pages/AddNewStaff";
 import { useAuth } from "./context/AuthContext";
 import RoutePlanner from "./pages/RoutePlanner/RoutePlanner";
 import ViewDestination from "./pages/DestinationsManagement/ViewDestination";
+import "leaflet/dist/leaflet.css";
 
 
 const DrawerHeader = styled("div")(({ theme }) => ({

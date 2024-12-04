@@ -16,10 +16,12 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import backgroundImage from "../../assets/images/sigiriya.jpg";
+import emptyImage from "../../assets/images/empty.jpg";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 import MapIcon from "@mui/icons-material/Map";
-import MyLocationIcon from '@mui/icons-material/MyLocation';
+import MyLocationIcon from "@mui/icons-material/MyLocation";
 import { toast } from "react-toastify";
+import PointingMap from "../../components/Destinations/PointingMap";
 
 export default function ViewDestination() {
   const { destinationId } = useParams(); // Extract `destinationId` from the URL
@@ -57,14 +59,15 @@ export default function ViewDestination() {
     return <div>Loading...</div>; // Show a loading state while fetching
   }
 
-
   const handleDelete = async () => {
     try {
-      axios.delete(`http://localhost:5000/api/destination/deleteDestination/${destinationId}`);
-      toast.success('Data successfully deleted!', {
+      axios.delete(
+        `http://localhost:5000/api/destination/deleteDestination/${destinationId}`
+      );
+      toast.success("Data successfully deleted!", {
         position: "bottom-right",
       });
-      navigate('/destinations')
+      navigate("/destinations");
     } catch (err) {
       toast.error(err.message, {
         position: "bottom-right",
@@ -92,7 +95,7 @@ export default function ViewDestination() {
               <CardMedia
                 component="img"
                 height="300"
-                image={backgroundImage} // Replace with actual image path
+                image={emptyImage} // Replace with actual image path
                 alt="Main image"
               />
             </Card>
@@ -104,7 +107,7 @@ export default function ViewDestination() {
                   <CardMedia
                     component="img"
                     height="140"
-                    image={backgroundImage} // Replace with actual image path
+                    image={emptyImage} // Replace with actual image path
                     alt="Image 1"
                   />
                 </Card>
@@ -114,7 +117,7 @@ export default function ViewDestination() {
                   <CardMedia
                     component="img"
                     height="140"
-                    image={backgroundImage} // Replace with actual image path
+                    image={emptyImage} // Replace with actual image path
                     alt="Image 2"
                   />
                 </Card>
@@ -124,7 +127,7 @@ export default function ViewDestination() {
                   <CardMedia
                     component="img"
                     height="140"
-                    image={backgroundImage} // Replace with actual image path
+                    image={emptyImage} // Replace with actual image path
                     alt="Image 3"
                   />
                 </Card>
@@ -134,7 +137,7 @@ export default function ViewDestination() {
                   <CardMedia
                     component="img"
                     height="140"
-                    image={backgroundImage} // Replace with actual image path
+                    image={emptyImage} // Replace with actual image path
                     alt="Image 4"
                   />
                 </Card>
@@ -161,8 +164,8 @@ export default function ViewDestination() {
                 Kandy to Anuradhapura
               </Typography>
             </Box>
-            <IconButton sx={{color: "#04bd4e"}} size="large">
-              <MyLocationIcon sx={{fontSize: '2rem'}}/>
+            <IconButton sx={{ color: "#04bd4e" }} size="large">
+              <MyLocationIcon sx={{ fontSize: "2rem" }} />
             </IconButton>
           </Box>
           <Typography variant="h6" sx={{ marginY: 2 }}>
@@ -178,7 +181,12 @@ export default function ViewDestination() {
           >
             Valid on Mar 28 2023
           </Typography>
-          <Button variant="outlined" color="error" fullWidth onClick={handleDelete}>
+          <Button
+            variant="outlined"
+            color="error"
+            fullWidth
+            onClick={handleDelete}
+          >
             Remove Location
           </Button>
           <Typography
@@ -196,17 +204,34 @@ export default function ViewDestination() {
 
       {/* Tabs Section */}
       <Box sx={{ marginTop: 5 }}>
-        <Box sx={{display: 'flex', justifyContent: 'flex-start', alignItems: 'center', gap: '1rem', marginBottom: '0.3rem'}}>
-          <Typography variant="h6">
-            About the Destination
-          </Typography>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "flex-start",
+            alignItems: "center",
+            gap: "1rem",
+            marginBottom: "0.3rem",
+          }}
+        >
+          <Typography variant="h6">About the Destination</Typography>
           <IconButton>
-            <VolumeUpIcon sx={{fontSize: '2rem'}}/>
+            <VolumeUpIcon sx={{ fontSize: "2rem" }} />
           </IconButton>
         </Box>
-        <Typography variant="body1" textAlign={"justify"} sx={{fontStyle: "italic"}}>
+        <Typography
+          variant="body1"
+          textAlign={"justify"}
+          sx={{ fontStyle: "italic" }}
+        >
           {destination.description}
         </Typography>
+      </Box>
+      <Box sx={{marginTop: 5}}>
+        <Typography variant="h6">Map Location</Typography>
+        <PointingMap
+          passedLongitude={destination.longitude}
+          passedLatitude={destination.latitude}
+        />
       </Box>
     </Container>
   );
