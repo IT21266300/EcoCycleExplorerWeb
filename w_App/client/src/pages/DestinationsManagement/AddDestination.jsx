@@ -33,7 +33,7 @@ export default function AddDestination() {
       toast.success("New data has been created successfully!", {
         position: "bottom-right",
       });
-      navigate("/");
+      navigate("/destinations");
     } catch (err) {
       console.log(err);
       toast.error("err", { position: "bottom-right" });
@@ -86,7 +86,7 @@ export default function AddDestination() {
           }}
         >
           <Typography>Location</Typography>
-          <Box sx={{display: 'flex', gap: '5rem'}}>
+          <Box sx={{ display: "flex", gap: "5rem" }}>
             <Box
               sx={{
                 width: "100%",
@@ -144,17 +144,22 @@ export default function AddDestination() {
           }}
         >
           <Typography>Description</Typography>
-          <TextField
-            id="outlined-multiline-static"
-            label="Description"
-            multiline
-            rows={5}
-            width="100%"
+          <textarea
+            style={{
+              width: "100%",
+              minHeight: "300px", // Minimum height (adjustable)
+              maxHeight: "1000px", // Maximum height (adjustable)
+              resize: "vertical", // Allow vertical resizing by the user
+              padding: "8px", // Add padding for better appearance
+              borderRadius: "4px", // Optional: Rounded corners
+              border: "1px solid #ccc", // Border style
+              fontSize: "16px", // Font size
+              lineHeight: "1.5", // Line height
+            }}
             name="description"
             value={description}
-            onChange={(e) => {
-              setDescription(e.target.value);
-            }}
+            onChange={(e) => setDescription(e.target.value)}
+            placeholder="Enter description"
           />
         </Box>
         <Box>
