@@ -18,6 +18,7 @@ import Destinations from "./pages/DestinationsManagement/Destinations";
 import NewStaff from "./pages/AddNewStaff";
 import { useAuth } from "./context/AuthContext";
 import RoutePlanner from "./pages/RoutePlanner/RoutePlanner";
+import ViewDestination from "./pages/DestinationsManagement/ViewDestination";
 
 
 const DrawerHeader = styled("div")(({ theme }) => ({
@@ -68,6 +69,7 @@ const App = () => {
                     <Route path="/routePlanner" element={<RoutePlanner />} />
                     <Route path="/destinations" element={<Destinations />} />
                     <Route path="/addDestination" element={<AddDestination />} />
+                    <Route path="/viewDestination/:destinationId" element={<ViewDestination />} />
 
                     <Route path="/addNewStaff" element={<NewStaff />} />
                   </Routes>

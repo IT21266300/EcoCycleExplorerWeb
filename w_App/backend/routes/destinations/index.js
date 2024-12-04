@@ -37,6 +37,17 @@ router.route("/").get((req,res)=>{
     })
 })
 
+router.route('/:destinationId').get(async (req, res) => {
+    let destinationId = req.params.destinationId;
+    const destination = await Destination.findById(destinationId)
+      .then((destination) => {
+        res.status(200).send({ status: 'Destination fetched', destination: destination });
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  });
+
 //update
 
 // router.route("/update/:id").put(async (req,res)=>{
@@ -62,16 +73,16 @@ router.route("/").get((req,res)=>{
 
 // //delete
 
-// router.route("/delete/:id").delete(async (req,res)=>{
-//     let userId = req.params.id;
+router.route("/deleteDestination/:id").delete(async (req,res)=>{
+    let destinationId = req.params.id;
 
-//     await Staff.findByIdAndDelete(userId).then(()=>{
-//         res.status(200).send({status: "Delete"})
-//     }).catch((err)=>{
-//         console.log(err);
-//     })  
+    await Destination.findByIdAndDelete(destinationId).then(()=>{
+        res.status(200).send({status: "Delete"})
+    }).catch((err)=>{
+        console.log(err);
+    })  
 
-// })
+})
 
 // module.exports = router;
 export default router;

@@ -51,6 +51,11 @@ export default function Destinations() {
     },
   ];
 
+  const handleClick = (destinationId) => {
+    navigate(`/viewDestination/${destinationId}`)
+    console.log(destinationId);
+  };
+
   columns.push({
     field: "action",
     headerName: "View",
@@ -59,7 +64,7 @@ export default function Destinations() {
     filterable: false,
     renderCell: (params) => (
       <Box>
-        <Button variant="contained">More ..</Button>
+        <Button variant="contained" onClick={() => handleClick(params.row.mongoID)} params={params}>More ..</Button>
       </Box>
     ),
   });

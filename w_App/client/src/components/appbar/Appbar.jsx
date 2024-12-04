@@ -6,6 +6,7 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import MenuIcon from "@mui/icons-material/Menu";
 import Button from "@mui/material/Button";
+import { useNavigate } from "react-router-dom";
 
 const AppBarStyled = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "open",
@@ -26,6 +27,9 @@ const AppBarStyled = styled(MuiAppBar, {
 }));
 
 const AppBarComponent = ({ open, handleDrawerOpen, handleLogout }) => {
+
+  const navigate = useNavigate();
+
   return (
     <AppBarStyled position="fixed" open={open} sx={{ background: "#04bd4e" }}>
       <Toolbar>
