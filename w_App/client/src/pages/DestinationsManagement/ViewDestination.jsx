@@ -1,4 +1,4 @@
-// import { Box, Chip, Container, Stack, Typography } from "@mui/material";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Typography,
@@ -11,24 +11,22 @@ import {
   Container,
   IconButton,
 } from "@mui/material";
-import StarIcon from "@mui/icons-material/Star";
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import backgroundImage from "../../assets/images/sigiriya.jpg";
-import emptyImage from "../../assets/images/empty.jpg";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
-import MapIcon from "@mui/icons-material/Map";
+import StopIcon from "@mui/icons-material/Stop";
 import MyLocationIcon from "@mui/icons-material/MyLocation";
-import { toast } from "react-toastify";
+import axios from "axios";
+import { useNavigate, useParams } from "react-router-dom";
+import emptyImage from "../../assets/images/empty.jpg";
 import PointingMap from "../../components/Destinations/PointingMap";
 
 export default function ViewDestination() {
   const { destinationId } = useParams(); // Extract `destinationId` from the URL
   const [destination, setDestination] = useState(null);
   const [error, setError] = useState(null);
-
+  const [isSpeaking, setIsSpeaking] = useState(false); // State to manage speech status
   const navigate = useNavigate();
+  let synth = window.speechSynthesis; // Web Speech API instance
+  let utterance = null;
 
   useEffect(() => {
     const fetchDestination = async () => {
@@ -46,22 +44,25 @@ export default function ViewDestination() {
     fetchDestination();
   }, [destinationId]); // Fetch data whenever `destinationId` changes
 
-  // Debugging: Log destination when it changes
-  useEffect(() => {
-    console.log("Updated destination:", destination);
-  }, [destination]);
+  const handleSpeechToggle = () => {
+    if (!destination?.description) return; // Guard clause if description is unavailable
 
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
-
-  if (!destination) {
-    return <div>Loading...</div>; // Show a loading state while fetching
-  }
+    if (isSpeaking) {
+      // Stop speech
+      synth.cancel();
+      setIsSpeaking(false);
+    } else {
+      // Play speech
+      utterance = new SpeechSynthesisUtterance(destination.description);
+      utterance.onend = () => setIsSpeaking(false); // Reset state after speech ends
+      synth.speak(utterance);
+      setIsSpeaking(true);
+    }
+  };
 
   const handleDelete = async () => {
     try {
-      axios.delete(
+      await axios.delete(
         `http://localhost:5000/api/destination/deleteDestination/${destinationId}`
       );
       toast.success("Data successfully deleted!", {
@@ -76,6 +77,14 @@ export default function ViewDestination() {
     }
   };
 
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  if (!destination) {
+    return <div>Loading...</div>; // Show a loading state while fetching
+  }
+
   return (
     <Container maxWidth="xl" sx={{ paddingY: "16px" }}>
       {/* Title Section */}
@@ -83,7 +92,7 @@ export default function ViewDestination() {
         {destination.destination}
       </Typography>
       <Typography variant="body1" color="text.secondary">
-        <strong>Colombo, Sri Lanka</strong> | {destination.latitude},
+        <strong>Colombo, Sri Lanka</strong> | {destination.latitude},{" "}
         {destination.longitude} | Adventure, Culture/Nature, Popular
       </Typography>
 
@@ -95,7 +104,7 @@ export default function ViewDestination() {
               <CardMedia
                 component="img"
                 height="300"
-                image={emptyImage} // Replace with actual image path
+                image={emptyImage}
                 alt="Main image"
               />
             </Card>
@@ -107,7 +116,7 @@ export default function ViewDestination() {
                   <CardMedia
                     component="img"
                     height="140"
-                    image={emptyImage} // Replace with actual image path
+                    image={emptyImage}
                     alt="Image 1"
                   />
                 </Card>
@@ -117,7 +126,7 @@ export default function ViewDestination() {
                   <CardMedia
                     component="img"
                     height="140"
-                    image={emptyImage} // Replace with actual image path
+                    image={emptyImage}
                     alt="Image 2"
                   />
                 </Card>
@@ -127,7 +136,7 @@ export default function ViewDestination() {
                   <CardMedia
                     component="img"
                     height="140"
-                    image={emptyImage} // Replace with actual image path
+                    image={emptyImage}
                     alt="Image 3"
                   />
                 </Card>
@@ -137,7 +146,7 @@ export default function ViewDestination() {
                   <CardMedia
                     component="img"
                     height="140"
-                    image={emptyImage} // Replace with actual image path
+                    image={emptyImage}
                     alt="Image 4"
                   />
                 </Card>
@@ -214,8 +223,12 @@ export default function ViewDestination() {
           }}
         >
           <Typography variant="h6">About the Destination</Typography>
-          <IconButton>
-            <VolumeUpIcon sx={{ fontSize: "2rem" }} />
+          <IconButton onClick={handleSpeechToggle}>
+            {isSpeaking ? (
+              <StopIcon sx={{ fontSize: "2rem" }} />
+            ) : (
+              <VolumeUpIcon sx={{ fontSize: "2rem" }} />
+            )}
           </IconButton>
         </Box>
         <Typography
@@ -226,7 +239,7 @@ export default function ViewDestination() {
           {destination.description}
         </Typography>
       </Box>
-      <Box sx={{marginTop: 5}}>
+      <Box sx={{ marginTop: 5 }}>
         <Typography variant="h6">Map Location</Typography>
         <PointingMap
           passedLongitude={destination.longitude}
