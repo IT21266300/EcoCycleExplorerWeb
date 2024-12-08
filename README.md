@@ -70,6 +70,13 @@ The project uses the following technologies and tools:
 - **OpenWeatherMap**: For real-time weather updates.
 - **Kaggle Datasets**: For training AI models.
 
+### IoT Device for Health Monitoring:
+An IoT device was developed as part of this project to monitor cyclists' health metrics and integrate them into the application.
+Key Components
+- **Arduino Uno**: Microcontroller used to build the IoT device.
+- **Sensors**: Heart rate sensor
+- **Communication Module**: Bluetooth module (e.g., HC-05) for transmitting data to the mobile app.
+
 ### Additional Tools:
 - **Mongodb**: For database
   
