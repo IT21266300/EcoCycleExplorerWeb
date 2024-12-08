@@ -89,10 +89,10 @@ The architecture integrates:
 - **TensorFlow**: For training and deploying ML models.  
 - **OpenCV**: For real-time hazard analysis.  
 
-### Data Sources and APIs:  
-- **Google Maps API**: Route planning and navigation.  
-- **OpenWeatherMap**: Real-time weather updates.  
-- **Custom Datasets**: Derived from Kaggle and other sources for ML model training.  
+### Data and APIs:
+- **Google Maps API**: For route planning and navigation.
+- **OpenWeatherMap**: For real-time weather updates.
+- **Kaggle Datasets**: For training AI models.
 
 ### Database and Storage:  
 - **MongoDB**: For user data and app metadata storage.  
