@@ -34,7 +34,8 @@ EcoCycle Explorer is an innovative Android mobile application designed to revolu
 ### Objective:  
 To develop an AI-driven mobile application to:  
 - Enhance sustainable bicycle tourism in Sri Lanka.  
-- Provide real-time hazard detection and route optimization using ML models.  
+- Provide real-time hazard detection and route optimization using ML models.
+- Develop a Location base Voice Navigation System with multilingual support  
 - Deliver an immersive cycling experience integrating eco-friendly and culturally rich elements.  
 
 ---
@@ -48,7 +49,7 @@ To develop an AI-driven mobile application to:
 2. **Hazard Detection (ML-Based)**  
    - Real-time detection of dangerous road bends, sandy surfaces, and other hazards using mobile phone sensors.  
 
-3. **Voice-Guided Navigation**  
+3. **Location-based Voice Navigation**  
    - Multilingual voice assistance for safe and hands-free navigation.  
 
 4. **3D Audio Immersion**  
@@ -108,11 +109,26 @@ The architecture integrates:
 
 ### **Safety Enhancements**  
 - An algorithm analyzes sensor data from nearby cyclists to detect and relay alerts about road dangers.  
-- Alerts are shared with cyclists further behind to prevent accidents.   
+- Alerts are shared with cyclists further behind to prevent accidents.
+
+### **Location-based Voice Navigation**  
+- Design a system that offers real-time voice guidance for cyclists.
+- Ensure the system accurately identifies and announces landmarks.
+- Integrate GPS and mapping technologies for precise navigation.
 
 ### **Route Optimization and Navigation**  
 - AI algorithms dynamically calculate the most efficient and safe routes.  
-- Factors like road conditions, real-time weather, and user preferences are considered.  
+- Factors like road conditions, real-time weather, and user preferences are considered.
+
+### **Develop Team and Individual Ride**  
+- Create options for both solo rides and group navigation.
+- Develop a feature to synchronize rides within a team, allowing shared experiences.
+- Ensure the system can handle real-time updates for multiple users on different routes.
+
+### **Multilingual Support**
+- Implement multi-language options for both navigation and landmark descriptions.
+- Localize the application for different languages spoken by tourists.
+- Ensure translations are culturally appropriate and accurate.
 
 ### **Cultural and Eco-Friendly Integration**  
 - Routes are designed to include eco-friendly paths and culturally significant landmarks, fostering sustainable tourism.  
