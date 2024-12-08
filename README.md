@@ -2,7 +2,7 @@
 
 **AI-Driven Approach for Sustainable Bicycle Tourism Development in Sri Lanka**  
 
-EcoCycle Explorer is an innovative Android mobile application designed to revolutionize sustainable bicycle tourism in Sri Lanka. Leveraging artificial intelligence, the app ensures enhanced user safety, optimized routes, and immersive experiences while promoting eco-friendly tourism. A key component of the project is the integration of a machine learning (ML) model for hazard detection, utilizing real-time mobile phone sensor data.  
+EcoCycle Explorer is an innovative Android mobile application with web application designed to revolutionize sustainable bicycle tourism in Sri Lanka. Leveraging artificial intelligence, the app ensures enhanced user safety, optimized routes, and immersive experiences while promoting eco-friendly tourism.  
 
 ---
 
@@ -71,8 +71,8 @@ To develop an AI-driven mobile application to:
 ![System Architecture](image.png)  
 
 The architecture integrates:  
-- Machine learning models for hazard detection using real-time sensor data.  
-- AI-based route optimization engines.  
+- AI-based route optimization engines.
+- Machine learning models for hazard detection using real-time sensor data.    
 - APIs for real-time weather and navigation data.  
 - Adaptive audio technology for immersive cycling experiences.  
 
@@ -98,9 +98,21 @@ The architecture integrates:
 ### Database and Storage:  
 - **MongoDB**: For user data and app metadata storage.  
 
+### IoT Device for Health Monitoring:
+An IoT device was developed as part of this project to monitor cyclists' health metrics and integrate them into the application.
+Key Components
+- **Arduino Uno**: Microcontroller used to build the IoT device.
+- **Sensors**: Heart rate sensor
+- **Communication Module**: Bluetooth module (e.g., HC-05) for transmitting data to the mobile app.
+
+
 ---
 
 ## How It Works  
+
+### **Route Optimization and Navigation**  
+- AI algorithms dynamically calculate the most efficient and safe routes.  
+- Factors like road conditions, real-time weather, and user preferences are considered.
 
 ### **Hazard Detection Using Mobile Sensors**  
 - Real-time mobile phone sensor data (accelerometer, gyroscope, and GPS) is fed into a custom-trained ML model.  
@@ -115,10 +127,6 @@ The architecture integrates:
 - Design a system that offers real-time voice guidance for cyclists.
 - Ensure the system accurately identifies and announces landmarks.
 - Integrate GPS and mapping technologies for precise navigation.
-
-### **Route Optimization and Navigation**  
-- AI algorithms dynamically calculate the most efficient and safe routes.  
-- Factors like road conditions, real-time weather, and user preferences are considered.
 
 ### **Develop Team and Individual Ride**  
 - Create options for both solo rides and group navigation.
@@ -137,4 +145,4 @@ The architecture integrates:
 
 ## Conclusion  
 
-EcoCycle Explorer combines cutting-edge AI and ML technologies with real-time sensor data to ensure safe, immersive, and sustainable bicycle tourism. Its innovative hazard detection system and adaptive audio features set a new standard for eco-friendly travel experiences.  
+EcoCycle Explorer combines cutting-edge AI and ML technologies with real-time sensor data to ensure safe, immersive, and sustainable bicycle tourism. Its innovative route optimization, hazard detection system and adaptive audio features set a new standard for eco-friendly travel experiences.  
