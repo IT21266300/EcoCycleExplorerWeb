@@ -16,50 +16,314 @@
 
     <title>EcoCycle Explorer</title>
 </head>
-<body style="background-color: #E9F7EF">
-    <!-- NavBar -->
-    <nav id="navmenu" class="navbar navbar-expand-lg sticky-top">
-        <a class="navbar-brand" href="#home">
-            <img src="images/Icon.png" width="40" height="40" class="d-inline-block align-top"  />
-            <span style="font-size: 1.6rem;">EcoCycle Explorer</span><br>
+<body style="background: linear-gradient(135deg, #E8F5E8 0%, #F0F8F0 100%); min-height: 100vh; margin: 0; padding-top: 80px;">
+
+<nav id="navmenu" class="navbar navbar-expand-lg fixed-top" style="
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(117, 168, 43, 0.1);
+    box-shadow: 0 4px 20px rgba(117, 168, 43, 0.08);
+    padding: 12px 0;
+    transition: all 0.3s ease;
+">
+    <div class="container-fluid px-4">
+        <a class="navbar-brand d-flex align-items-center" href="#home" style="
+            text-decoration: none;
+            transition: all 0.3s ease;
+        " onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+            <div style="
+                background: linear-gradient(135deg, #75A82B, #8BC34A);
+                border-radius: 12px;
+                padding: 8px;
+                margin-right: 12px;
+                box-shadow: 0 4px 12px rgba(117, 168, 43, 0.3);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            ">
+                <i class="fas fa-bicycle" style="
+                    color: white;
+                    font-size: 24px;
+                "></i>
+            </div>
+            <div>
+                <span style="
+                    font-size: 1.7rem;
+                    font-weight: 700;
+                    background: linear-gradient(135deg, #2E7D32, #43A047);
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    background-clip: text;
+                    font-family: 'Inter', sans-serif;
+                    letter-spacing: -0.5px;
+                ">EcoCycle Explorer</span>
+                <div style="
+                    font-size: 0.8rem;
+                    color: #6B7280;
+                    font-weight: 400;
+                    margin-top: -2px;
+                ">AI Travel Partner</div>
+            </div>
         </a>
-        <button id="nav-toggle" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span id="nav-toggle-icon" class="fas fa-ellipsis-v"></span>
+        
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="
+            background: linear-gradient(135deg, #75A82B, #8BC34A);
+            border-radius: 8px;
+            padding: 8px 12px;
+            box-shadow: 0 2px 8px rgba(117, 168, 43, 0.3);
+            transition: all 0.3s ease;
+        " onmouseover="this.style.transform='translateY(-1px)'; this.style.boxShadow='0 4px 12px rgba(117, 168, 43, 0.4)'" 
+           onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(117, 168, 43, 0.3)'">
+            <i class="fas fa-bars" style="color: white; font-size: 16px;"></i>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul id="navmenu-links" class="navbar-nav ml-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#home">Home</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Project Scope
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#project-scope">Literature Survey</a>
-                <a class="dropdown-item" href="#research_gap">Research Gap</a>
-                <a class="dropdown-item" href="#research_problem">Research Problem &amp; Solution</a>
-                <a class="dropdown-item" href="#research_objectives">Research Objectives</a>
-                <a class="dropdown-item" href="#methodology">Methodology</a>
-                <a class="dropdown-item" href="#tech_used">Technologies</a>
-              </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#milestones">Milestones</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#downloads">Documents</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#about">About Us</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#contact">Contact Us</a>
-            </li>
-          </ul>
+            <ul class="navbar-nav ms-auto d-flex align-items-center" style="gap: 8px;">
+                <li class="nav-item">
+                    <a class="nav-link position-relative" href="#home" style="
+                        color: #2E7D32;
+                        font-weight: 600;
+                        padding: 10px 18px;
+                        border-radius: 25px;
+                        transition: all 0.3s ease;
+                        background: linear-gradient(135deg, #E8F5E8, #F1F8E9);
+                        font-family: 'Inter', sans-serif;
+                        font-size: 14px;
+                        position: relative;
+                        overflow: hidden;
+                    " onmouseover="
+                        this.style.background='linear-gradient(135deg, #75A82B, #8BC34A)';
+                        this.style.color='white';
+                        this.style.transform='translateY(-2px)';
+                        this.style.boxShadow='0 4px 12px rgba(117, 168, 43, 0.3)';
+                    " onmouseout="
+                        this.style.background='linear-gradient(135deg, #E8F5E8, #F1F8E9)';
+                        this.style.color='#2E7D32';
+                        this.style.transform='translateY(0)';
+                        this.style.boxShadow='none';
+                    ">
+                        <i class="fas fa-home me-2" style="font-size: 12px;"></i>Home
+                    </a>
+                </li>
+                
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" 
+                       data-bs-toggle="dropdown" aria-expanded="false" style="
+                        color: #2E7D32;
+                        font-weight: 600;
+                        padding: 10px 18px;
+                        border-radius: 25px;
+                        transition: all 0.3s ease;
+                        font-family: 'Inter', sans-serif;
+                        font-size: 14px;
+                    " onmouseover="
+                        this.style.background='linear-gradient(135deg, #E8F5E8, #F1F8E9)';
+                        this.style.transform='translateY(-1px)';
+                    " onmouseout="
+                        this.style.background='transparent';
+                        this.style.transform='translateY(0)';
+                    ">
+                        <i class="fas fa-project-diagram me-2" style="font-size: 12px;"></i>Project Scope
+                    </a>
+                    <ul class="dropdown-menu" style="
+                        background: rgba(255, 255, 255, 0.95);
+                        backdrop-filter: blur(10px);
+                        border: 1px solid rgba(117, 168, 43, 0.1);
+                        border-radius: 12px;
+                        box-shadow: 0 8px 30px rgba(117, 168, 43, 0.15);
+                        padding: 8px;
+                        margin-top: 8px;
+                    ">
+                        <li><a class="dropdown-item" href="#project-scope" style="
+                            padding: 10px 16px;
+                            border-radius: 8px;
+                            transition: all 0.3s ease;
+                            color: #2E7D32;
+                            font-weight: 500;
+                            font-size: 14px;
+                        " onmouseover="
+                            this.style.background='linear-gradient(135deg, #E8F5E8, #F1F8E9)';
+                            this.style.transform='translateX(4px)';
+                        " onmouseout="
+                            this.style.background='transparent';
+                            this.style.transform='translateX(0)';
+                        ">
+                            <i class="fas fa-book-open me-2" style="font-size: 12px; color: #75A82B;"></i>Literature Survey
+                        </a></li>
+                        <li><a class="dropdown-item" href="#research_gap" style="
+                            padding: 10px 16px;
+                            border-radius: 8px;
+                            transition: all 0.3s ease;
+                            color: #2E7D32;
+                            font-weight: 500;
+                            font-size: 14px;
+                        " onmouseover="
+                            this.style.background='linear-gradient(135deg, #E8F5E8, #F1F8E9)';
+                            this.style.transform='translateX(4px)';
+                        " onmouseout="
+                            this.style.background='transparent';
+                            this.style.transform='translateX(0)';
+                        ">
+                            <i class="fas fa-search me-2" style="font-size: 12px; color: #75A82B;"></i>Research Gap
+                        </a></li>
+                        <li><a class="dropdown-item" href="#research_problem" style="
+                            padding: 10px 16px;
+                            border-radius: 8px;
+                            transition: all 0.3s ease;
+                            color: #2E7D32;
+                            font-weight: 500;
+                            font-size: 14px;
+                        " onmouseover="
+                            this.style.background='linear-gradient(135deg, #E8F5E8, #F1F8E9)';
+                            this.style.transform='translateX(4px)';
+                        " onmouseout="
+                            this.style.background='transparent';
+                            this.style.transform='translateX(0)';
+                        ">
+                            <i class="fas fa-lightbulb me-2" style="font-size: 12px; color: #75A82B;"></i>Research Problem & Solution
+                        </a></li>
+                        <li><a class="dropdown-item" href="#research_objectives" style="
+                            padding: 10px 16px;
+                            border-radius: 8px;
+                            transition: all 0.3s ease;
+                            color: #2E7D32;
+                            font-weight: 500;
+                            font-size: 14px;
+                        " onmouseover="
+                            this.style.background='linear-gradient(135deg, #E8F5E8, #F1F8E9)';
+                            this.style.transform='translateX(4px)';
+                        " onmouseout="
+                            this.style.background='transparent';
+                            this.style.transform='translateX(0)';
+                        ">
+                            <i class="fas fa-target me-2" style="font-size: 12px; color: #75A82B;"></i>Research Objectives
+                        </a></li>
+                        <li><a class="dropdown-item" href="#methodology" style="
+                            padding: 10px 16px;
+                            border-radius: 8px;
+                            transition: all 0.3s ease;
+                            color: #2E7D32;
+                            font-weight: 500;
+                            font-size: 14px;
+                        " onmouseover="
+                            this.style.background='linear-gradient(135deg, #E8F5E8, #F1F8E9)';
+                            this.style.transform='translateX(4px)';
+                        " onmouseout="
+                            this.style.background='transparent';
+                            this.style.transform='translateX(0)';
+                        ">
+                            <i class="fas fa-cogs me-2" style="font-size: 12px; color: #75A82B;"></i>Methodology
+                        </a></li>
+                        <li><a class="dropdown-item" href="#tech_used" style="
+                            padding: 10px 16px;
+                            border-radius: 8px;
+                            transition: all 0.3s ease;
+                            color: #2E7D32;
+                            font-weight: 500;
+                            font-size: 14px;
+                        " onmouseover="
+                            this.style.background='linear-gradient(135deg, #E8F5E8, #F1F8E9)';
+                            this.style.transform='translateX(4px)';
+                        " onmouseout="
+                            this.style.background='transparent';
+                            this.style.transform='translateX(0)';
+                        ">
+                            <i class="fas fa-laptop-code me-2" style="font-size: 12px; color: #75A82B;"></i>Technologies
+                        </a></li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="#milestones" style="
+                        color: #2E7D32;
+                        font-weight: 600;
+                        padding: 10px 18px;
+                        border-radius: 25px;
+                        transition: all 0.3s ease;
+                        font-family: 'Inter', sans-serif;
+                        font-size: 14px;
+                    " onmouseover="
+                        this.style.background='linear-gradient(135deg, #E8F5E8, #F1F8E9)';
+                        this.style.transform='translateY(-1px)';
+                    " onmouseout="
+                        this.style.background='transparent';
+                        this.style.transform='translateY(0)';
+                    ">
+                        <i class="fas fa-flag-checkered me-2" style="font-size: 12px;"></i>Milestones
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="#downloads" style="
+                        color: #2E7D32;
+                        font-weight: 600;
+                        padding: 10px 18px;
+                        border-radius: 25px;
+                        transition: all 0.3s ease;
+                        font-family: 'Inter', sans-serif;
+                        font-size: 14px;
+                    " onmouseover="
+                        this.style.background='linear-gradient(135deg, #E8F5E8, #F1F8E9)';
+                        this.style.transform='translateY(-1px)';
+                    " onmouseout="
+                        this.style.background='transparent';
+                        this.style.transform='translateY(0)';
+                    ">
+                        <i class="fas fa-download me-2" style="font-size: 12px;"></i>Documents
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="#about" style="
+                        color: #2E7D32;
+                        font-weight: 600;
+                        padding: 10px 18px;
+                        border-radius: 25px;
+                        transition: all 0.3s ease;
+                        font-family: 'Inter', sans-serif;
+                        font-size: 14px;
+                    " onmouseover="
+                        this.style.background='linear-gradient(135deg, #E8F5E8, #F1F8E9)';
+                        this.style.transform='translateY(-1px)';
+                    " onmouseout="
+                        this.style.background='transparent';
+                        this.style.transform='translateY(0)';
+                    ">
+                        <i class="fas fa-users me-2" style="font-size: 12px;"></i>About Us
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact" style="
+                        background: linear-gradient(135deg, #75A82B, #8BC34A);
+                        color: white;
+                        font-weight: 600;
+                        padding: 10px 20px;
+                        border-radius: 25px;
+                        transition: all 0.3s ease;
+                        font-family: 'Inter', sans-serif;
+                        font-size: 14px;
+                        box-shadow: 0 2px 8px rgba(117, 168, 43, 0.3);
+                        margin-left: 8px;
+                    " onmouseover="
+                        this.style.transform='translateY(-2px)';
+                        this.style.boxShadow='0 4px 15px rgba(117, 168, 43, 0.4)';
+                        this.style.background='linear-gradient(135deg, #689F38, #7CB342)';
+                    " onmouseout="
+                        this.style.transform='translateY(0)';
+                        this.style.boxShadow='0 2px 8px rgba(117, 168, 43, 0.3)';
+                        this.style.background='linear-gradient(135deg, #75A82B, #8BC34A)';
+                    ">
+                        <i class="fas fa-envelope me-2" style="font-size: 12px;"></i>Contact Us
+                    </a>
+                </li>
+            </ul>
         </div>
-      </nav>
+    </div>
+</nav>
+
       
       <!-- Home Section -->
       <section id="home">
