@@ -3,1143 +3,907 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+  
     <!-- SEO Meta Tags -->
     <meta name="description" content="EcoCycle Explorer Cycling Traveling App – AI-powered travel platform offering personalized travel planning in Sri Lanka. Explore top travel routes, local activities, and cultural spots tailored to your preferences.">
     <meta name="keywords" content="EcoCycle Explorer, Travel Planning, Sri Lanka, AI-powered travel, personalized travel, local tours, cultural travel, travel app">
     <meta name="author" content="EcoCycle Explorer Travels (Pvt) Ltd">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <title>EcoCycle Explorer - AI-Powered Cycling Adventures</title>
-    
-    <style>
-        :root {
-            --primary-color: #75A82B;
-            --primary-dark: #5d8622;
-            --primary-light: #8bc234;
-            --secondary-color: #2c5530;
-            --accent-color: #f8fafc;
-            --text-dark: #1e293b;
-            --text-muted: #64748b;
-            --gradient-primary: linear-gradient(135deg, #75A82B 0%, #5d8622 100%);
-            --gradient-secondary: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
-            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
-        }
+    <link rel="icon" type="image/x-icon" href="images/Icon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            color: var(--text-dark);
-            background: #fafafa;
-        }
-
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Enhanced Navbar */
-        .navbar {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            padding: 1rem 0;
-        }
-
-        .navbar.scrolled {
-            background: rgba(255, 255, 255, 0.98);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .navbar-brand {
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: var(--primary-color) !important;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .navbar-brand img {
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
-        }
-
-        .nav-link {
-            font-weight: 500;
-            color: var(--text-dark) !important;
-            padding: 0.5rem 1rem !important;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .nav-link:hover, .nav-link.active {
-            color: var(--primary-color) !important;
-            background: rgba(117, 168, 43, 0.1);
-        }
-
-        /* Hero Section */
-        .hero-section {
-            min-height: 100vh;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
-            position: relative;
-            display: flex;
-            align-items: center;
-            overflow: hidden;
-        }
-
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="a" cx="50%" cy="50%"><stop offset="0%" stop-color="%2375A82B" stop-opacity="0.3"/><stop offset="100%" stop-color="%2375A82B" stop-opacity="0"/></radialGradient></defs><circle cx="200" cy="200" r="100" fill="url(%23a)"/><circle cx="800" cy="300" r="150" fill="url(%23a)"/><circle cx="300" cy="800" r="120" fill="url(%23a)"/></svg>') no-repeat center center;
-            background-size: cover;
-            opacity: 0.6;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            color: white;
-        }
-
-        .hero-title {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #ffffff 0%, #75A82B 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-subtitle {
-            font-size: 1.25rem;
-            font-weight: 400;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        .btn-hero {
-            background: var(--gradient-primary);
-            border: none;
-            padding: 1rem 2rem;
-            font-weight: 600;
-            border-radius: 50px;
-            color: white;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow-lg);
-        }
-
-        .btn-hero:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-xl);
-            color: white;
-        }
-
-        /* Section Styling */
-        .section {
-            padding: 5rem 0;
-            position: relative;
-        }
-
-        .section-alt {
-            background: white;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 1rem;
-            color: var(--text-dark);
-        }
-
-        .section-subtitle {
-            font-size: 1.1rem;
-            text-align: center;
-            color: var(--text-muted);
-            margin-bottom: 3rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Enhanced Cards */
-        .feature-card {
-            background: white;
-            border-radius: 16px;
-            padding: 2rem;
-            height: 100%;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: var(--gradient-primary);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-xl);
-        }
-
-        .feature-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .feature-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--gradient-primary);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-            color: white;
-            font-size: 1.5rem;
-        }
-
-        .feature-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--text-dark);
-        }
-
-        /* Enhanced Timeline */
-        .timeline-container {
-            position: relative;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .timeline-item {
-            display: flex;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        .timeline-item:nth-child(even) {
-            flex-direction: row-reverse;
-        }
-
-        .timeline-content {
-            background: white;
-            padding: 2rem;
-            border-radius: 16px;
-            box-shadow: var(--shadow-md);
-            flex: 1;
-            margin: 0 2rem;
-            position: relative;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .timeline-date {
-            background: var(--gradient-primary);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            display: inline-block;
-            margin-bottom: 1rem;
-        }
-
-        .timeline-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--text-dark);
-        }
-
-        .timeline-description {
-            color: var(--text-muted);
-            margin-bottom: 1rem;
-        }
-
-        .timeline-status {
-            display: inline-block;
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        .status-completed {
-            background: #dcfce7;
-            color: #166534;
-        }
-
-        .status-in-progress {
-            background: #fef3c7;
-            color: #92400e;
-        }
-
-        .status-upcoming {
-            background: #e0e7ff;
-            color: #3730a3;
-        }
-
-        /* Timeline Line */
-        .timeline-container::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: #e2e8f0;
-            transform: translateX(-50%);
-        }
-
-        /* Timeline Dots */
-        .timeline-dot {
-            position: absolute;
-            left: 50%;
-            top: 2rem;
-            width: 16px;
-            height: 16px;
-            background: var(--primary-color);
-            border-radius: 50%;
-            transform: translateX(-50%);
-            border: 4px solid white;
-            box-shadow: var(--shadow-md);
-        }
-
-        /* Team Cards */
-        .team-card {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: var(--shadow-md);
-            transition: all 0.3s ease;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .team-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-xl);
-        }
-
-        .team-image {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-        }
-
-        .team-info {
-            padding: 1.5rem;
-        }
-
-        .team-name {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--text-dark);
-        }
-
-        .team-role {
-            color: var(--primary-color);
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-        }
-
-        .team-description {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 0.5rem;
-        }
-
-        .social-link {
-            width: 36px;
-            height: 36px;
-            background: #f8fafc;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .social-link:hover {
-            background: var(--primary-color);
-            color: white;
-        }
-
-        /* Footer */
-        .footer {
-            background: var(--text-dark);
-            color: white;
-            padding: 3rem 0 2rem;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-section h5 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-
-        .footer-link {
-            color: #cbd5e1;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-link:hover {
-            color: var(--primary-color);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .timeline-item {
-                flex-direction: column !important;
-            }
-            
-            .timeline-item:nth-child(even) {
-                flex-direction: column !important;
-            }
-            
-            .timeline-content {
-                margin: 0 0 2rem 0;
-            }
-            
-            .timeline-container::before {
-                left: 2rem;
-            }
-            
-            .timeline-dot {
-                left: 2rem;
-            }
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animate-fade-in {
-            animation: fadeInUp 0.6s ease-out;
-        }
-
-        /* Scroll Progress Bar */
-        .scroll-progress {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 0%;
-            height: 3px;
-            background: var(--gradient-primary);
-            z-index: 9999;
-            transition: width 0.1s ease;
-        }
-    </style>
+    <title>EcoCycle Explorer</title>
 </head>
-<body>
-    <div class="scroll-progress"></div>
-    
-    <!-- Enhanced Navigation -->
-    <nav class="navbar navbar-expand-lg fixed-top">
+<body style="background-color: #E9F7EF">
+    <!-- NavBar -->
+    <nav id="navmenu" class="navbar navbar-expand-lg sticky-top">
+        <a class="navbar-brand" href="#home">
+            <img src="images/Icon.png" width="40" height="40" class="d-inline-block align-top"  />
+            <span style="font-size: 1.6rem;">EcoCycle Explorer</span><br>
+        </a>
+        <button id="nav-toggle" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span id="nav-toggle-icon" class="fas fa-ellipsis-v"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul id="navmenu-links" class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#home">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Project Scope
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#project-scope">Literature Survey</a>
+                <a class="dropdown-item" href="#research_gap">Research Gap</a>
+                <a class="dropdown-item" href="#research_problem">Research Problem &amp; Solution</a>
+                <a class="dropdown-item" href="#research_objectives">Research Objectives</a>
+                <a class="dropdown-item" href="#methodology">Methodology</a>
+                <a class="dropdown-item" href="#tech_used">Technologies</a>
+              </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#milestones">Milestones</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#downloads">Documents</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#about">About Us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#contact">Contact Us</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      
+      <!-- Home Section -->
+      <section id="home">
         <div class="container">
-            <a class="navbar-brand" href="#home">
-                <i class="fas fa-bicycle"></i>
-                <span>EcoCycle Explorer</span>
-            </a>
-            
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#home">Home</a>
+          <div class="row">
+            <div class="col-md-6 col-12 ">
+              <div class="hero-cta">
+                <h1>EcoCycle Explorer <br>Your AI Travel Partner</h1>
+                <!-- Update button functionality if needed -->
+                <a class="btn btn-outline-light" type="button" href="#project-scope"><span class="btn-text">Learn More</span><span class="fas fa-chevron-right btn-icon"></span></a>
+              </div>
+            </div>
+            <div class="col-md-6 col-12 justify-content-center">
+              <!-- <img src="images/Mobile.png" class="mobile"> -->
+              <!-- Reminder: Replace "images/Mobile.png" if necessary -->
+            </div>
+          </div>
+        </div>
+        <div class="hero-cover">
+            <img class="hero-image" src="images/BackgroundImage.webp">
+            <!-- Reminder: Replace "images/HeroImg.png" if necessary -->
+        </div>
+      </section>
+
+      <!-- Placeholder for Additional Sections -->
+      <section class="main-sections">
+        <div class="container">
+          <!-- Add content relevant to EcoCycle Explorer project -->
+        </div>
+      </section>
+   <!-- Project Scope -->
+<section id="project-scope" class="main-sections" style="background-color:#FDFEFE">
+  <div class="container">
+      <h5 class="section-headings">Project Scope</h5>
+      <!-- Literature Survey -->
+      <div id="literature" class="sub-section">
+          <h2>Literature Survey</h2>
+          <div class="row">
+              <div id="project-scope-left" class="col-md-6 col-sm-12 pt-lg-5">
+                  <div class="section-left">
+                      <div class="section-figure">
+                          <img src="images/Travel Img2.jpeg" class="Travel_Img">
+                          <!-- Reminder: Update "images/Travel Img2.jpeg" if necessary -->
+                      </div>
+                  </div>
+              </div>
+              <div id="project-scope-right" class="col-md-6 col-sm-12 pt-lg-5 justify-text">
+                  <p>The EcoCycle Explorer project aims to enhance sustainable bicycle tourism in Sri Lanka by leveraging AI-driven technologies. Extensive research highlights the importance of integrating AI in tourism to provide safer, more personalized, and environmentally friendly experiences. For instance, studies by Fernando et al. demonstrate how machine learning algorithms can optimize cycling routes, tailoring them to user preferences and safety requirements. Similarly, research by Perera and Silva emphasizes the role of real-time data in improving traveler decision-making and satisfaction through personalized recommendations.</p>
+                  <p>Recent advancements in mobile and AI technologies have further revolutionized tourism experiences. In the context of Sri Lanka, integrating AI with mobile applications can address critical challenges such as real-time hazard detection, health monitoring, and navigation. The EcoCycle Explorer system aims to be a comprehensive solution for cyclists, enhancing their travel experience by providing dynamic, safe, and culturally immersive routes tailored to seasonal variations and user preferences. Learn more about our approach in the <a href="#">literature review</a>. 
+                      <!-- Reminder: Replace "#" with the actual link to the literature review -->
+                  </p>
+              </div>
+          </div>
+      </div>
+      <!-- Research Gap -->
+      <div id="research_gap" class="sub-section">
+          <h2>Research Gap</h2>
+          <p>The EcoCycle Explorer project addresses the following research gaps:</p>
+          <div class="row mt-5 research-gap">
+              <div class="container">
+                  <div class="row">
+                      <div class="col-md-4">
+                          <div class="gap-card p-4 m-2">
+                              <div class="fa-container text-center">
+                                  <i class="fas fa-robot fa-3x" aria-hidden="true" style="color:#75A82B;"></i>
+                              </div>
+                              <div class="text-center" style="padding-top: 20px;">
+                                  <h5>Seasonal Route Optimization</h5>
+                              </div>
+                              <div>
+                                  <p style="text-align: justify;">Existing systems often fail to consider seasonal variations in route planning. The EcoCycle Explorer system integrates real-time weather data and user preferences to recommend optimal cycling routes, promoting safer and more enjoyable travel experiences across diverse climates and terrains.</p>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-md-4">
+                          <div class="gap-card p-4 m-2">
+                              <div class="fa-container text-center">
+                                  <i class="fas fa-user-cog fa-3x" aria-hidden="true" style="color: #75A82B;"></i>
+                              </div>
+                              <div class="text-center" style="padding-top: 20px;">
+                                  <h5>Localized Route Recommendations</h5>
+                              </div>
+                              <div>
+                                  <p style="text-align: justify;">Traditional travel apps often neglect localized insights. EcoCycle Explorer incorporates AI to provide culturally rich and environmentally sensitive routes. This feature supports the discovery of hidden landmarks and promotes interaction with local businesses, enhancing the overall tourist experience.</p>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-md-4">
+                          <div class="gap-card p-4 m-2">
+                              <div class="fa-container text-center">
+                                  <i class="fas fa-glasses fa-3x" aria-hidden="true" style="color: #75A82B;"></i>
+                              </div>
+                              <div class="text-center" style="padding-top: 20px;">
+                                  <h5>Real-Time Hazard Detection</h5>
+                              </div>
+                              <div>
+                                  <p style="text-align: justify;">Safety is a major concern for cyclists. Existing technologies lack real-time hazard detection capabilities. The EcoCycle Explorer system employs AI-powered hazard detection to identify road conditions, warn cyclists of potential dangers, and suggest safer alternative routes dynamically.</p>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="gap-card p-4 m-2">
+                            <div class="fa-container text-center">
+                                <i class="fas fa-robot fa-3x" aria-hidden="true" style="color:#75A82B;"></i>
+                            </div>
+                            <div class="text-center" style="padding-top: 20px;">
+                                <h5>Location Based Voice Navigation System</h5>
+                            </div>
+                            <div>
+                                <p style="text-align: justify;">To identify the research gap, this study compares the features and objectives of the proposed location-based voice navigation system for bicycle tourists in Sri Lanka with existing systems and research. While prior studies have significantly advanced navigation technology, smart tourism, and voice-controlled systems, they often fail to address the specific needs of bicycle tourists in Sri Lanka.</p>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+              </div> 
+          </div>
+      </div>
+  </div>
+           <!-- Research Problem -->
+<div id="research_problem" class="sub-section mx-5">
+  <h2>Research Problem &amp; Solution</h2>
+  <div>
+    <h5><strong>Proposed Problem</strong></h5>
+    <br>
+    <h4 class="highlight">How can AI-driven solutions enhance bicycle tourism in Sri Lanka, addressing safety, accessibility, and environmental sustainability?</h4>
+    <p style="text-align: justify;">
+        Sri Lanka’s bicycle tourism potential is underutilized, facing challenges such as safety concerns, lack of optimized cycling routes, and limited technological integration. Cyclists often struggle with navigation, seasonal unpredictability, and the absence of real-time hazard detection, which affects their overall experience. Additionally, cultural and eco-tourism opportunities remain untapped, requiring a solution that promotes sustainable tourism while enhancing user satisfaction.
+    </p>
+    <br>
+      <!-- <div id="project-scope-right" class="col-md-6 col-sm-12 pt-lg-5">
+          <div class="section-left">
+              <div class="section-figure">
+                  <iframe width="100%" height="315" src="https://www.youtube.com/embed/_K2Wk7KTfQ0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+                  <p>EcoCycle Explorer Demonstration - Solution Overview</p>
+              </div>
+          </div>
+      </div> -->
+  </div>
+  <div>
+      <h5><strong>Proposed Solution</strong></h5>
+      <br>
+      <p style="text-align: justify;">
+          EcoCycle Explorer proposes an AI-powered travel application tailored for bicycle tourism in Sri Lanka. The solution focuses on:
+          <ul>
+              <li>Real-time route optimization considering terrain, safety, and seasonal factors</li>
+              <li>Hazard detection using AI to alert cyclists about road conditions and obstacles</li>
+              <li>Integration of localized cultural and eco-tourism insights to promote hidden landmarks</li>
+              <li>Develop a location-based voice navigation system with real-time guidance, landmark recognition, and GPS integration for cyclists</li>
+              <li>Offline navigation and emergency support for remote areas</li>
+          </ul>
+          By employing machine learning, IoT, and augmented reality (AR) technologies, the system aims to provide personalized travel planning, real-time assistance, and an enriched tourism experience while promoting sustainability.
+      </p>
+  </div>
+</div>
+
+<!-- Research Objectives -->
+<div id="research_objectives" class="sub-section">
+  <div class="container">
+      <h2 class="pb-5 pt-5 text-center mb-5 display-5">Research Objectives</h2>
+      <!-- First Content Section -->
+      <div class="row align-items-center connecting-lines d-flex">
+          <div class="col-2 text-center bottom d-inline-flex justify-content-center align-items-center">
+              <div class="circle font-weight-bold"><i class="fa fa-star"></i></div>
+          </div>
+          <div class="col-6">
+              <h4 style="color: #75A82B;">Develop AI-Powered Route Optimization Algorithms</h4>
+              <p style="text-align: justify;">
+                  Create algorithms that optimize bicycle routes based on real-time data, user preferences, and environmental factors. By integrating machine learning models, the system will ensure safe, efficient, and sustainable travel experiences.
+              </p>
+          </div>
+      </div>
+      <!-- Path Line -->
+      <div class="row timeline_s">
+          <div class="col-2">
+              <div class="corner top-right"></div>
+          </div>
+          <div class="col-8">
+              <hr>
+          </div>
+          <div class="col-2">
+              <div class="corner left-bottom"></div>
+          </div>
+      </div>
+      <!-- Second Content Section -->
+      <div class="row align-items-center justify-content-end connecting-lines d-flex">
+          <div class="col-6 text-right">
+              <h4 style="color: #75A82B;">Enhance Safety with Real-Time Hazard Detection</h4>
+              <p style="text-align: justify;">
+                  Implement AI-driven hazard detection systems to analyze road conditions and provide timely alerts to cyclists. This feature ensures safer navigation and proactive risk management.
+              </p>
+          </div>
+          <div class="col-2 text-center full d-inline-flex justify-content-center align-items-center">
+              <div class="circle font-weight-bold"><i class="fa fa-star"></i></div>
+          </div>
+      </div>
+      <!-- Path Line -->
+      <div class="row timeline_s">
+          <div class="col-2">
+              <div class="corner right-bottom"></div>
+          </div>
+          <div class="col-8">
+              <hr>
+          </div>
+          <div class="col-2">
+              <div class="corner top-left"></div>
+          </div>
+      </div>
+      <!-- Third Content Section -->
+      <div class="row align-items-center connecting-lines d-flex">
+          <div class="col-2 text-center full d-inline-flex justify-content-center align-items-center">
+              <div class="circle font-weight-bold"><i class="fa fa-star"></i></div>
+          </div>
+          <div class="col-6">
+              <h4 style="color: #75A82B;">Promote Sustainability and Cultural Tourism</h4>
+              <p style="text-align: justify;">
+                  Integrate cultural insights and eco-tourism elements into the application. Highlight lesser-known destinations and promote sustainable travel practices to enrich the tourism experience and support local communities.
+              </p>
+          </div>
+      </div>
+  </div>
+</div>
+		   <!-- Path Line -->
+<div class="row timeline_s">
+  <div class="col-2">
+      <div class="corner top-right"></div>
+  </div>
+  <div class="col-8">
+      <hr>
+  </div>
+  <div class="col-2">
+      <div class="corner left-bottom"></div>
+  </div>
+</div>
+<!-- Second Content Section -->
+<div class="row align-items-center justify-content-end connecting-lines d-flex">
+  <div class="col-6 text-right">
+      <h4 style="color: #75A82B;">Sentiment Analysis of Hotel Reviews for Personalized Recommendations</h4>
+      <p style="text-align: justify;">
+          This objective focuses on utilizing NLP techniques to analyze user-generated reviews. The system extracts valuable insights and aligns them with user preferences for recommending accommodations, ensuring higher satisfaction. Sentiment analysis enables personalized suggestions, such as family-friendly, budget, or luxury hotels, tailored to individual expectations.
+      </p>
+  </div>
+  <div class="col-2 text-center full d-inline-flex justify-content-center align-items-center">
+      <div class="circle font-weight-bold"><i class="fa fa-star"></i></div>
+  </div>
+</div>
+
+<!-- Path Line -->
+<div class="row timeline_s">
+  <div class="col-2">
+      <div class="corner right-bottom"></div>
+  </div>
+  <div class="col-8">
+      <hr>
+  </div>
+  <div class="col-2">
+      <div class="corner top-left"></div>
+  </div>
+</div>
+<div class="row align-items-center connecting-lines d-flex">
+  <div class="col-2 text-center full d-inline-flex justify-content-center align-items-center">
+      <div class="circle font-weight-bold"><i class="fa fa-star"></i></div>
+  </div>
+  <div class="col-6">
+      <h4 style="color: #75A82B;">Develop a Location-based Voice Navigation System</h4>
+      <p style="text-align: justify;">
+        The technology enriches travel by offering detailed landmark descriptions, highlighting cultural, historical, and scenic significance to transform journeys into informative adventures.
+      </p>
+  </div>
+</div>
+
+<!-- Methodology -->
+<div id="methodology" class="sub-section mx-5">
+  <h2>Methodology</h2>
+  <div class="row">
+      <div id="project-scope-left" class="col-md-6 col-sm-12 pt-lg-5 d-flex justify-content-center align-items-center">
+          <div class="section-left">
+              <div class="section-figure">
+                  <img src="images/mainD.png" width="100%" alt="System Architecture">
+                  <p class="text-center">Figure 1. High-Level Architecture of the system.</p>
+              </div>
+          </div>
+      </div>
+      <div id="project-scope-right" class="col-md-6 col-sm-12 pt-lg-5 justify-text">
+          <p>
+              The EcoCycle Explorer system is designed around four key components:
+              <br><br>
+              <b>1. Optimal Route Planning:</b> Personalized travel routes are generated using machine learning models like KNN and Ant Colony Optimization. Data is sourced from APIs and cleaned for accuracy, integrating Google Maps API for dynamic travel times and costs.
+              <br><br>
+              <b>2. Targeted Promotions:</b> Personalized destination promotions are built based on user calendars, seasonal preferences, and NLP models, delivering real-time notifications about relevant activities and accommodations.
+              <br><br>
+              <b>3. Knowledge Base with AR Tour Guide:</b> Augmented Reality experiences enhance destination engagement. AR visualizations provide cultural insights and support OCR for translating inscriptions, offering a rich, interactive experience.
+              <br><br>
+              <b>4. Sentiment-Based Comment Personalization:</b> NLP-powered analysis of hotel reviews provides insights into user preferences. This data is processed for accuracy and utilized to align suggestions with customer needs, improving satisfaction and business strategies.
+          </p>
+      </div>
+  </div>
+</div>
+
+<!-- Technologies Used -->
+<!-- Technologies Used -->
+<div id="tech_used" class="sub-section mx-5">
+  <h2>Technologies Used</h2>
+  <div class="row technology mt-5">
+      <!-- Python -->
+      <div class="col-md-2 col-sm-4 col-6 mb-5">
+          <div class="avatar" style="border: 2px solid #75A82B40;">
+              <img src="images/python.png" alt="Python">
+          </div>
+          <p class="mr-5">Python</p>
+      </div>
+      <!-- React -->
+      <div class="col-md-2 col-sm-4 col-6 mb-5">
+          <div class="avatar" style="border: 2px solid #75A82B40;">
+              <img src="images/react.png" alt="React">
+          </div>
+          <p class="mr-5">React</p>
+      </div>
+      <!-- NodeJS -->
+      <div class="col-md-2 col-sm-4 col-6 mb-5">
+        <div class="avatar" style="border: 2px solid #75A82B40;">
+            <img src="images/NodeJS.png" alt="Node">
+        </div>
+        <p class="mr-5">NodeJS</p>
+    </div>
+      <!-- TensorFlow -->
+      <div class="col-md-2 col-sm-4 col-6 mb-5">
+          <div class="avatar" style="border: 2px solid #75A82B40;">
+              <img src="images/tensorflow.png" alt="TensorFlow">
+          </div>
+          <p class="mr-5">TensorFlow</p>
+      </div>
+      <!-- Firebase -->
+      <div class="col-md-2 col-sm-4 col-6 mb-5">
+          <div class="avatar" style="border: 2px solid #75A82B40;">
+              <img src="images/firebase.png" alt="Firebase">
+          </div>
+          <p class="mr-5">Firebase</p>
+      </div>
+        <!-- Firebase -->
+      <div class="col-md-2 col-sm-4 col-6 mb-5">
+          <div class="avatar" style="border: 2px solid #75A82B40;">
+              <img src="images\DigitalOcean.png" alt="DigitalOcean">
+          </div>
+          <p class="mr-5">DigitalOcean</p>
+      </div>
+      <!-- Google Colab -->
+      <div class="col-md-2 col-sm-4 col-6 mb-5">
+          <div class="avatar" style="border: 2px solid #75A82B40;">
+              <img src="images/colab.png" alt="Google Colab">
+          </div>
+          <p class="mr-5">Google Colab</p>
+      </div>
+      <!-- Google Map API -->
+      <div class="col-md-2 col-sm-4 col-6 mb-5">
+          <div class="avatar" style="border: 2px solid #75A82B40;">
+              <img src="images/googlemap.png" alt="Google Map API">
+          </div>
+          <p class="mr-5">Google Map</p>
+      </div>
+
+
+
+  </div>
+</div></section>
+      <!-- Milestones -->
+      <section id="milestones" class="main-sections">
+        <div class="container">
+            <h5 class="section-headings">Milestones</h5>
+            <div class="sub-section">
+                <h2>Timeline in Brief</h2>
+                <div class="milestones">
+                  <ul class="timeline">
+                    <!-- Project Proposal -->
+                    <li class="timeline-event">
+                      <label class="timeline-event-icon"></label>
+                      <div class="timeline-event-copy">
+                        <p class="timeline-event-thumbnail">February 2024</p>
+                        <h3>Project Proposal</h3>
+                        <p>A Project Proposal is presented to potential sponsors or clients to receive funding or get your project approved.</p>
+                        <p><strong>Marks Allocated : </strong>6</p>
+                        <div class="progress">
+                          <div class="progress-bar bg-success" role="progressbar" style="width: 6%" aria-valuenow="12" aria-valuemin="0" aria-valuemax="100">6%</div>
+                        </div>
+                      </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#features">Features</a>
+                    <!-- Progress Presentation I -->
+                    <li class="timeline-event">
+                      <label class="timeline-event-icon"></label>
+                      <div class="timeline-event-copy">
+                        <p class="timeline-event-thumbnail">May 2024</p>
+                        <h3>Progress Presentation I</h3>
+                        <p>Progress Presentation I reviews the 50% completetion status of the project. This reveals any gaps or inconsistencies in the design/requirements.</p>
+                        <p><strong>Marks Allocated : </strong>6</p>
+                        <div class="progress">
+                          <div class="progress-bar bg-infinity-primary" role="progressbar" style="width: 12%" aria-valuenow="13" aria-valuemin="0" aria-valuemax="100"></div>
+                          <div class="progress-bar bg-success" role="progressbar" style="width: 6%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100">6%</div>
+                        </div>
+                      </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#timeline">Timeline</a>
+                    <!-- Research Paper -->
+                    <li class="timeline-event">
+                      <label class="timeline-event-icon"></label>
+                      <div class="timeline-event-copy">
+                        <p class="timeline-event-thumbnail">June 2024</p>
+                        <h3>Research Paper</h3>
+                        <p>Describes what you contribute to existing knowledge, giving due recognition to all work that you referred in making new knowledge</p>
+                        <p><strong>Marks Allocated : </strong>10</p>
+                        <div class="progress">
+                          <div class="progress-bar bg-infinity-primary" role="progressbar" style="width: 27%" aria-valuenow="27" aria-valuemin="0" aria-valuemax="100"></div>
+                          <div class="progress-bar bg-success" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">10%</div>
+                        </div>
+                      </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#team">Team</a>
+                    <!-- Progress Presentation II -->
+                    <li class="timeline-event">
+                      <label class="timeline-event-icon"></label>
+                      <div class="timeline-event-copy">
+                        <p class="timeline-event-thumbnail">September 2024</p>
+                        <h3>Progress Presentation II</h3>
+                        <p>Progress Presentation II reviews the 90% completetion status demonstration of the project. Along with a Poster presesntation which describes the project as a whole.</p>
+                        <p><strong>Marks Allocated : </strong>18</p>
+                        <div class="progress">
+                          <div class="progress-bar bg-infinity-primary" role="progressbar" style="width: 37%" aria-valuenow="37" aria-valuemin="0" aria-valuemax="100"></div>
+                          <div class="progress-bar bg-success" role="progressbar" style="width: 18%" aria-valuenow="18" aria-valuemin="0" aria-valuemax="100">18%</div>
+                        </div>
+                      </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact</a>
+                    <!-- Website -->
+                    <li class="timeline-event">
+                      <label class="timeline-event-icon"></label>
+                      <div class="timeline-event-copy">
+                        <p class="timeline-event-thumbnail">October 2024</p>
+                        <h3>Website Assessment</h3>
+                        <p>The Website helps to promote our research project and reveals all details related to the project.</p>
+                        <p><strong>Marks Allocated : </strong>2</p>
+                        <div class="progress">
+                          <div class="progress-bar bg-infinity-primary" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
+                          <div class="progress-bar bg-success" role="progressbar" style="width: 2%" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100">2%</div>
+                        </div>
+                      </div>
                     </li>
-                </ul>
+                    <!-- Logbook -->
+                    <li class="timeline-event">
+                      <label class="timeline-event-icon"></label>
+                      <div class="timeline-event-copy">
+                        <p class="timeline-event-thumbnail">October 2024</p>
+                        <h3>Logbook</h3>
+                        <p>Status of the project is validated through the Logbook. This also includes, Status documents 1 &amp; 2.</p>
+                        <p><strong>Marks Allocated : </strong>3</p>
+                        <div class="progress">
+                          <div class="progress-bar bg-infinity-primary" role="progressbar" style="width: 57%" aria-valuenow="57" aria-valuemin="0" aria-valuemax="100"></div>
+                          <div class="progress-bar bg-success" role="progressbar" style="width: 3%" aria-valuenow="4" aria-valuemin="0" aria-valuemax="100">3%</div>
+                        </div>
+                      </div>
+                    </li>
+                    <!-- Final Report -->
+                    <li class="timeline-event">
+                      <label class="timeline-event-icon"></label>
+                      <div class="timeline-event-copy">
+                        <p class="timeline-event-thumbnail">October 2024</p>
+                        <h3>Final Report</h3>
+                        <p>Final Report evalutes the completed project done throughout the year. Marks mentioned below includes marks for Individual &amp; group reports and also Final report.</p>
+                        <p><strong>Marks Allocated : </strong>19</p>
+                        <div class="progress">
+                          <div class="progress-bar bg-infinity-primary" role="progressbar" style="width: 61%" aria-valuenow="61" aria-valuemin="0" aria-valuemax="100"></div>
+                          <div class="progress-bar bg-success" role="progressbar" style="width: 19%" aria-valuenow="29" aria-valuemin="0" aria-valuemax="100">19%</div>
+                        </div>
+                      </div>
+                    </li>
+                    <!-- Viva -->
+                    <li class="timeline-event">
+                      <label class="timeline-event-icon"></label>
+                      <div class="timeline-event-copy">
+                        <p class="timeline-event-thumbnail">October  2024</p>
+                        <h3>Final Presentation &amp; Viva</h3>
+                        <p>Viva is held individually to assess each members contribution to the project.</p>
+                        <p><strong>Marks Allocated : </strong>20</p>
+                        <div class="progress">
+                          <div class="progress-bar bg-infinity-primary" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                          <div class="progress-bar bg-success" role="progressbar" style="width: 20%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">20%</div>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
             </div>
         </div>
-    </nav>
-
-    <!-- Enhanced Hero Section -->
-    <section id="home" class="hero-section">
-        <div class="hero-bg"></div>
+      </section>
+      <!-- Downloads -->
+      <section id="downloads" class="main-sections">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <div class="hero-content animate-fade-in">
-                        <h1 class="hero-title">EcoCycle Explorer</h1>
-                        <p class="hero-subtitle">Your AI-powered companion for sustainable cycling adventures across Sri Lanka. Discover hidden gems, optimize routes, and explore responsibly.</p>
-                        <a href="#features" class="btn-hero">
-                            Explore Features
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="hero-visual">
-                        <!-- Add your hero image or animation here -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Enhanced Features Section -->
-    <section id="features" class="section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 mx-auto text-center">
-                    <h2 class="section-title">Innovative Features</h2>
-                    <p class="section-subtitle">Discover how our AI-powered platform revolutionizes cycling tourism in Sri Lanka</p>
-                </div>
-            </div>
-            
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-4">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-route"></i>
-                        </div>
-                        <h4 class="feature-title">Smart Route Optimization</h4>
-                        <p>AI algorithms analyze terrain, weather, and safety data to create personalized cycling routes that adapt to seasonal variations and your preferences.</p>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 col-lg-4">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                        <h4 class="feature-title">Real-time Hazard Detection</h4>
-                        <p>Advanced AI monitoring system identifies road conditions, weather hazards, and obstacles, providing instant alerts and alternative route suggestions.</p>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 col-lg-4">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-map-marked-alt"></i>
-                        </div>
-                        <h4 class="feature-title">Cultural Discovery</h4>
-                        <p>Uncover hidden landmarks and local gems with AI-curated cultural insights that promote sustainable interaction with local communities.</p>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 col-lg-4">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-microphone"></i>
-                        </div>
-                        <h4 class="feature-title">Voice Navigation</h4>
-                        <p>Location-based voice guidance system with real-time directions, landmark recognition, and cultural storytelling for an immersive experience.</p>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 col-lg-4">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-heart"></i>
-                        </div>
-                        <h4 class="feature-title">Sentiment Analysis</h4>
-                        <p>NLP-powered analysis of hotel and destination reviews provides personalized accommodation recommendations based on traveler preferences.</p>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 col-lg-4">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-leaf"></i>
-                        </div>
-                        <h4 class="feature-title">Eco-Sustainability</h4>
-                        <p>Promote sustainable tourism practices while supporting local businesses and minimizing environmental impact through responsible travel planning.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Enhanced Timeline Section -->
-    <section id="timeline" class="section section-alt">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 mx-auto text-center">
-                    <h2 class="section-title">Project Timeline</h2>
-                    <p class="section-subtitle">Follow our journey from concept to completion</p>
-                </div>
-            </div>
-            
-            <div class="timeline-container">
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">February 2024</span>
-                        <h4 class="timeline-title">Project Proposal</h4>
-                        <p class="timeline-description">Initial project proposal presented to stakeholders, outlining the vision for AI-powered cycling tourism in Sri Lanka.</p>
-                        <span class="timeline-status status-completed">Completed</span>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">May 2024</span>
-                        <h4 class="timeline-title">Progress Presentation I</h4>
-                        <p class="timeline-description">50% completion milestone showcasing initial development progress, system architecture, and prototype demonstrations.</p>
-                        <span class="timeline-status status-completed">Completed</span>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">June 2024</span>
-                        <h4 class="timeline-title">Research Paper</h4>
-                        <p class="timeline-description">Comprehensive research paper documenting our contribution to AI-powered tourism technology and sustainable travel solutions.</p>
-                        <span class="timeline-status status-completed">Completed</span>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">September 2024</span>
-                        <h4 class="timeline-title">Progress Presentation II</h4>
-                        <p class="timeline-description">90% completion milestone with full system demonstration, poster presentation, and comprehensive feature showcase.</p>
-                        <span class="timeline-status status-completed">Completed</span>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">December 2024</span>
-                        <h4 class="timeline-title">Final Implementation</h4>
-                        <p class="timeline-description">Complete system deployment with all AI features operational, mobile app published, and user testing completed.</p>
-                        <span class="timeline-status status-in-progress">In Progress</span>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">March 2025</span>
-                        <h4 class="timeline-title">Final Presentation & VIVA</h4>
-                        <p class="timeline-description">Final project evaluation, comprehensive system demonstration, and individual assessment of contributions.</p>
-                        <span class="timeline-status status-upcoming">Upcoming</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Enhanced Team Section -->
-    <section id="team" class="section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 mx-auto text-center">
-                    <h2 class="section-title">Meet Our Team</h2>
-                    <p class="section-subtitle">The passionate individuals behind EcoCycle Explorer</p>
-                </div>
-            </div>
-            
-            <div class="row g-4 justify-content-center">
-                <!-- Supervisor -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="team-card">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='250' viewBox='0 0 300 250'%3E%3Crect width='300' height='250' fill='%23f1f5f9'/%3E%3Ctext x='150' y='125' text-anchor='middle' fill='%2364748b' font-family='Arial' font-size='14'%3ESupervisor%3C/text%3E%3C/svg%3E" alt="Dr. Samantha Rajapaksha" class="team-image">
-                        <div class="team-info">
-                            <h5 class="team-name">Dr. Samantha Rajapaksha</h5>
-                            <p class="team-role">Project Supervisor</p>
-                            <p class="team-description">Head of Department, Information Technology at SLIIT</p>
-                            <div class="social-links">
-                                <a href="#" class="social-link"><i class="fab fa-google"></i></a>
-                                <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Co-Supervisor -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="team-card">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='250' viewBox='0 0 300 250'%3E%3Crect width='300' height='250' fill='%23f1f5f9'/%3E%3Ctext x='150' y='125' text-anchor='middle' fill='%2364748b' font-family='Arial' font-size='14'%3ECo-Supervisor%3C/text%3E%3C/svg%3E" alt="Mr. Nelum Chathuranga" class="team-image">
-                        <div class="team-info">
-                            <h5 class="team-name">Mr. Nelum Chathuranga</h5>
-                            <p class="team-role">Co-Supervisor</p>
-                            <p class="team-description">Faculty of Computing at SLIIT</p>
-                            <div class="social-links">
-                                <a href="#" class="social-link"><i class="fab fa-google"></i></a>
-                                <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="row g-4 justify-content-center mt-4">
-                <!-- Team Members -->
-                <div class="col-md-6 col-lg-3">
-                    <div class="team-card">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='250' viewBox='0 0 300 250'%3E%3Crect width='300' height='250' fill='%2375A82B'/%3E%3Ctext x='150' y='125' text-anchor='middle' fill='white' font-family='Arial' font-size='14'%3EGroup Leader%3C/text%3E%3C/svg%3E" alt="Bandara K.M.V.T." class="team-image">
-                        <div class="team-info">
-                            <h5 class="team-name">Bandara K.M.V.T.</h5>
-                            <p class="team-role">Group Leader</p>
-                            <p class="team-description">AI Route Optimization & System Architecture</p>
-                            <div class="social-links">
-                                <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                                <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 col-lg-3">
-                    <div class="team-card">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='250' viewBox='0 0 300 250'%3E%3Crect width='300' height='250' fill='%235d8622'/%3E%3Ctext x='150' y='125' text-anchor='middle' fill='white' font-family='Arial' font-size='14'%3EHazard Detection%3C/text%3E%3C/svg%3E" alt="Bandara R.M.D.L." class="team-image">
-                        <div class="team-info">
-                            <h5 class="team-name">Bandara R.M.D.L.</h5>
-                            <p class="team-role">Developer</p>
-                            <p class="team-description">Real-time Hazard Detection & Safety Systems</p>
-                            <div class="social-links">
-                                <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                                <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 col-lg-3">
-                    <div class="team-card">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='250' viewBox='0 0 300 250'%3E%3Crect width='300' height='250' fill='%238bc234'/%3E%3Ctext x='150' y='125' text-anchor='middle' fill='white' font-family='Arial' font-size='14'%3EVoice Navigation%3C/text%3E%3C/svg%3E" alt="Chandrasena H.M.K.G.J.K." class="team-image">
-                        <div class="team-info">
-                            <h5 class="team-name">Chandrasena H.M.K.G.J.K.</h5>
-                            <p class="team-role">Developer</p>
-                            <p class="team-description">Voice Navigation & Location Services</p>
-                            <div class="social-links">
-                                <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                                <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 col-lg-3">
-                    <div class="team-card">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='250' viewBox='0 0 300 250'%3E%3Crect width='300' height='250' fill='%232c5530'/%3E%3Ctext x='150' y='125' text-anchor='middle' fill='white' font-family='Arial' font-size='14'%3ESentiment Analysis%3C/text%3E%3C/svg%3E" alt="Kumara M.G.S.D." class="team-image">
-                        <div class="team-info">
-                            <h5 class="team-name">Kumara M.G.S.D.</h5>
-                            <p class="team-role">Developer</p>
-                            <p class="team-description">NLP & Sentiment Analysis for Recommendations</p>
-                            <div class="social-links">
-                                <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                                <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Technologies Section -->
-    <section class="section section-alt">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 mx-auto text-center">
-                    <h2 class="section-title">Technologies Used</h2>
-                    <p class="section-subtitle">Cutting-edge tools and frameworks powering our AI solution</p>
-                </div>
-            </div>
-            
-            <div class="row g-4 justify-content-center">
-                <div class="col-6 col-md-4 col-lg-2">
-                    <div class="tech-item text-center">
-                        <div class="tech-icon">
-                            <i class="fab fa-python" style="color: #3776ab; font-size: 3rem;"></i>
-                        </div>
-                        <h6 class="mt-2">Python</h6>
-                    </div>
-                </div>
-                <div class="col-6 col-md-4 col-lg-2">
-                    <div class="tech-item text-center">
-                        <div class="tech-icon">
-                            <i class="fab fa-react" style="color: #61dafb; font-size: 3rem;"></i>
-                        </div>
-                        <h6 class="mt-2">React</h6>
-                    </div>
-                </div>
-                <div class="col-6 col-md-4 col-lg-2">
-                    <div class="tech-item text-center">
-                        <div class="tech-icon">
-                            <i class="fab fa-node-js" style="color: #339933; font-size: 3rem;"></i>
-                        </div>
-                        <h6 class="mt-2">Node.js</h6>
-                    </div>
-                </div>
-                <div class="col-6 col-md-4 col-lg-2">
-                    <div class="tech-item text-center">
-                        <div class="tech-icon">
-                            <i class="fas fa-brain" style="color: #ff6f00; font-size: 3rem;"></i>
-                        </div>
-                        <h6 class="mt-2">TensorFlow</h6>
-                    </div>
-                </div>
-                <div class="col-6 col-md-4 col-lg-2">
-                    <div class="tech-item text-center">
-                        <div class="tech-icon">
-                            <i class="fas fa-fire" style="color: #ffca28; font-size: 3rem;"></i>
-                        </div>
-                        <h6 class="mt-2">Firebase</h6>
-                    </div>
-                </div>
-                <div class="col-6 col-md-4 col-lg-2">
-                    <div class="tech-item text-center">
-                        <div class="tech-icon">
-                            <i class="fas fa-map" style="color: #4285f4; font-size: 3rem;"></i>
-                        </div>
-                        <h6 class="mt-2">Google Maps</h6>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Download Section -->
-    <section class="section" style="background: var(--gradient-primary); color: white;">
-        <div class="container text-center">
-            <div class="row">
-                <div class="col-lg-8 mx-auto">
-                    <h2 class="section-title" style="color: white;">Download EcoCycle Explorer</h2>
-                    <p class="section-subtitle" style="color: rgba(255,255,255,0.9);">Get the app and start your sustainable cycling adventure today</p>
-                    
-                    <div class="d-flex justify-content-center gap-3 flex-wrap">
-                        <a href="#" class="btn btn-light btn-lg rounded-pill px-4">
-                            <i class="fab fa-google-play me-2"></i>
-                            Google Play Store
-                        </a>
-                        <a href="#" class="btn btn-outline-light btn-lg rounded-pill px-4">
-                            <i class="fas fa-download me-2"></i>
-                            Download APK
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section section-alt">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 mx-auto text-center">
-                    <h2 class="section-title">Get In Touch</h2>
-                    <p class="section-subtitle">Have questions about EcoCycle Explorer? We'd love to hear from you</p>
-                </div>
-            </div>
-            
-            <div class="row g-5">
-                <div class="col-lg-6">
-                    <div class="contact-form bg-white p-4 rounded-4 shadow-sm">
-                        <form>
-                            <div class="mb-3">
-                                <label for="name" class="form-label">Full Name</label>
-                                <input type="text" class="form-control form-control-lg rounded-3" id="name" placeholder="John Doe">
-                            </div>
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Email Address</label>
-                                <input type="email" class="form-control form-control-lg rounded-3" id="email" placeholder="john@example.com">
-                            </div>
-                            <div class="mb-3">
-                                <label for="subject" class="form-label">Subject</label>
-                                <input type="text" class="form-control form-control-lg rounded-3" id="subject" placeholder="Project Inquiry">
-                            </div>
-                            <div class="mb-4">
-                                <label for="message" class="form-label">Message</label>
-                                <textarea class="form-control form-control-lg rounded-3" id="message" rows="5" placeholder="Tell us about your inquiry..."></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-lg w-100 rounded-3" style="background: var(--gradient-primary); border: none; color: white;">
-                                <i class="fas fa-paper-plane me-2"></i>
-                                Send Message
-                            </button>
-                        </form>
-                    </div>
-                </div>
-                
-                <div class="col-lg-6">
-                    <div class="contact-info">
-                        <div class="contact-item mb-4">
-                            <div class="d-flex align-items-start">
-                                <div class="contact-icon me-3">
-                                    <i class="fas fa-envelope" style="color: var(--primary-color); font-size: 1.5rem;"></i>
-                                </div>
-                                <div>
-                                    <h5>Email Us</h5>
-                                    <p class="text-muted">vihinsabandara@gmail.com</p>
-                                </div>
-                            </div>
-                        </div>
+            <h5 class="section-headings">Downloads</h5>
+            <!-- Documents -->
+            <div class="sub-section">
+                <h2>Documents</h2>
+                <p>Please find all documents related to this project below.</p>
+                <div class="row mt-sm-5 downloads-container">
+				 <!-- Topic Assessment -->
+                  <div class="col-lg-3 col-md-4 col-sm-12" style="color:#75A82B">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title"><i class="fas fa-file-pdf mr-2 download-pdf"></i>Topic Assessment</h5>
                         
-                        <div class="contact-item mb-4">
-                            <div class="d-flex align-items-start">
-                                <div class="contact-icon me-3">
-                                    <i class="fas fa-university" style="color: var(--primary-color); font-size: 1.5rem;"></i>
-                                </div>
-                                <div>
-                                    <h5>Institution</h5>
-                                    <p class="text-muted">Sri Lanka Institute of Information Technology<br>Faculty of Computing</p>
-                                </div>
-                            </div>
-                        </div>
+                      </div>
+                      <ul class="download-items list-group list-group-flush">
+                        <li class="list-group-item">Group<a href="https://mysliit-my.sharepoint.com/:f:/g/personal/it21057724_my_sliit_lk/Ep2dKauP8n5OnepnTTKRmHUBB9i_9h_BM1G3609FTApg7g?e=Va4nFp" target="_blank">Download</a></li>
                         
-                        <div class="contact-item mb-4">
-                            <div class="d-flex align-items-start">
-                                <div class="contact-icon me-3">
-                                    <i class="fas fa-project-diagram" style="color: var(--primary-color); font-size: 1.5rem;"></i>
-                                </div>
-                                <div>
-                                    <h5>Project Type</h5>
-                                    <p class="text-muted">Final Year Research Project<br>AI & Machine Learning</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="social-media mt-4">
-                            <h5>Follow Our Journey</h5>
-                            <div class="d-flex gap-3 mt-3">
-                                <a href="#" class="social-link">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                                <a href="#" class="social-link">
-                                    <i class="fab fa-linkedin"></i>
-                                </a>
-                                <a href="#" class="social-link">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                                <a href="#" class="social-link">
-                                    <i class="fab fa-instagram"></i>
-                                </a>
-                            </div>
-                        </div>
+                      </ul>
+
                     </div>
+                  </div>
+                  <!-- Project Charter -->
+                  <div class="col-lg-3 col-md-4 col-sm-12" style="color:#75A82B">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title"><i class="fas fa-file-pdf mr-2 download-pdf"></i>Project Charter</h5>
+                        
+                      </div>
+                      <ul class="download-items list-group list-group-flush">
+                        <li class="list-group-item">Group<a href="https://mysliit-my.sharepoint.com/:f:/g/personal/it21057724_my_sliit_lk/ErJAMpaBksVBmfz2RMlAh_sB3qXSLmxXH0ejm3SvpSQ1rg?e=CuaNY7" target="_blank">Download</a></li>
+                       
+                      </ul>
+
+                    </div>
+                  </div>
+                  <!-- Project Proposal -->
+                  <div class="col-lg-3 col-md-4 col-sm-12" style="color:#75A82B" >
+                    <div class="card" >
+                      <div class="card-body" >
+                        <h5 class="card-title"><i class="fas fa-file-pdf mr-2 download-pdf"></i>Project Proposal</h5>
+                        
+                      </div>
+                      <ul class="download-items list-group list-group-flush" >
+                        <li class="list-group-item">Individual<a href="https://mysliit-my.sharepoint.com/:f:/g/personal/it21057724_my_sliit_lk/EpG9wjUPZhlAqooDtvz1KEABG_euMO0aop0xa8dm30CxCA?e=UYPl6E" target="_blank">Download</a></li>
+                      </ul>
+
+                    </div>
+                  </div>
+                  <!-- Status Documents -->
+                  <div class="col-lg-3 col-md-4 col-sm-12" style="color:#75A82B">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title"><i class="fas fa-file-pdf mr-2 download-pdf"></i>Status Documents I</h5>
+                        
+                      </div>
+                      <ul class="download-items list-group list-group-flush">
+                        
+                        <li class="list-group-item">Individual<a href="https://mysliit-my.sharepoint.com/:f:/g/personal/it21057724_my_sliit_lk/EsUesNLa03VPls3ARCHgdrsB2fiMu7TYOdoCiP5OU6M63A?e=pyDHp2" target="_blank">Download</a></li>
+                      </ul>
+
+                    </div>
+                  </div>
+                  <!-- Status Documents -->
+                  <div class="col-lg-3 col-md-4 col-sm-12" style="color:#75A82B">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title"><i class="fas fa-file-pdf mr-2 download-pdf"></i>Status Documents II</h5>
+                        
+                      </div>
+                      <ul class="download-items list-group list-group-flush">
+                       
+                        <li class="list-group-item">Individual<a href="https://mysliit-my.sharepoint.com/:f:/g/personal/it21057724_my_sliit_lk/EsmS1I-kjqNOna2NPzwtCtYB54N2mPHFxrqmW1RpZbdfFg?e=KnEr6r" target="_blank">Download</a></li>
+                      </ul>
+
+                    </div>
+                  </div>
+                  <!-- Research -->
+                  <div class="col-lg-3 col-md-4 col-sm-12" style="color:#75A82B">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title"><i class="fas fa-file-pdf mr-2 download-pdf"></i>Research Paper</h5>
+                        
+                      </div>
+                      <ul class="download-items list-group list-group-flush">
+                        <li class="list-group-item">Group<a href="https://mysliit-my.sharepoint.com/:f:/g/personal/it21057724_my_sliit_lk/EsmS1I-kjqNOna2NPzwtCtYB54N2mPHFxrqmW1RpZbdfFg?e=KnEr6r" target="_blank">Download</a></li>
+                      </ul>
+
+                    </div>
+                  </div>
+                  <!-- Final Report -->
+                  <div class="col-lg-3 col-md-4 col-sm-12" style="color:#75A82B">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title"><i class="fas fa-file-pdf mr-2 download-pdf"></i>Final Report</h5>
+                   
+                      </div>
+                      <ul class="download-items list-group list-group-flush">
+                        <li class="list-group-item">Group<a href="https://mysliit-my.sharepoint.com/:f:/g/personal/it21057724_my_sliit_lk/Err1Pq2Y_AxEg4vMHz-zUY0B2Y_aRaGKtifjR3epKSa1wQ?e=9fqfeb" target="_blank">Download</a></li>
+                        <li class="list-group-item">Individual<a href="https://mysliit-my.sharepoint.com/:f:/g/personal/it21057724_my_sliit_lk/Err1Pq2Y_AxEg4vMHz-zUY0B2Y_aRaGKtifjR3epKSa1wQ?e=9fqfeb" target="_blank">Download</a></li>
+                      </ul>
+
+                    </div>
+                  </div>
+                  <!-- Poster -->
+                  <div class="col-lg-3 col-md-4 col-sm-12" style="color:#75A82B">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title"><i class="fas fa-file-image mr-2 download-image"></i>Poster</h5>
+                      
+                      </div>
+                      <ul class="download-items list-group list-group-flush">
+                        <li class="list-group-item">Group<a href="https://mysliit-my.sharepoint.com/:f:/g/personal/it21057724_my_sliit_lk/ErdvGBuYrRlOoE8FaR4iaxwBdJVQDvkjjZzfbTC0nN9HfA?e=dpEEyt" target="_blank">Download</a></li>
+                      </ul>
+
+                    </div>
+                  </div>
                 </div>
             </div>
+            
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h5>EcoCycle Explorer</h5>
-                    <p style="color: #cbd5e1;">Revolutionizing sustainable cycling tourism in Sri Lanka through AI-powered solutions.</p>
-                    <div class="social-links mt-3">
-                        <a href="#" class="social-link me-2">
-                            <i class="fab fa-facebook"></i>
-                        </a>
-                        <a href="#" class="social-link me-2">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="social-link me-2">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="#" class="social-link">
-                            <i class="fab fa-github"></i>
-                        </a>
+      </section>
+      <!-- About Us -->
+<section id="about" class="main-sections" style="background-color:#FDFEFE">
+  <div class="container">
+      <h5 class="section-headings">About Us</h5>
+      <div class="sub-section about-us-container">
+          <h2>Meet Our Team!</h2>
+          <div class="row mt-sm-5 d-flex justify-content-center">
+              <!-- Supervisor -->
+              <div class="col-lg-3 col-md-4 col-sm-12">
+                  <div class="card about-us-card">
+                      <img src="images/Mr__Samantha.jpg" class="about-us-image supervisor" height="300px">
+                      <div class="card-body">
+                          <h5 class="card-title">Dr. Samantha Rajapaksha</h5>
+                          <br>
+                          <span class="badge" style="background-color: #75A82B; color: white;">Supervisor</span>
+                          <div class="text-group" style="height:100px;">
+                              <p>Sri Lanka Institute of Information Technology</p>
+                              <p>Head | Department of Information Technology</p>
+                          </div>
+                      </div>
+                      <ul class="list-group list-group-flush">
+                          <li class="list-group-item">
+                              <a class="card-text mr-4" href="https://scholar.google.com/citations?user=t1krVdkAAAAJ&hl=en" target="_blank">
+                                  <i class="fab fa-google mr-2"></i>G-Scholar
+                              </a>
+                              <a class="card-text" href="mailto:samantha.r@sliit.lk">
+                                  <i class="fas fa-envelope-open-text mr-2"></i>E-Mail
+                              </a>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+              <!-- Co-Supervisor -->
+              <div class="col-lg-3 col-md-4 col-sm-12">
+                  <div class="card about-us-card">
+                      <img src="images/images.jpg" class="about-us-image cosupervisor" height="300px">
+                      <div class="card-body">
+                          <h5 class="card-title">Mr. Nelum Chathuranga Amarasena</h5>
+                          <br>
+                          <span class="badge" style="background-color: #75A82B; color: white;">Co-Supervisor</span>
+                          <div class="text-group" style="height:100px;">
+                              <p>Sri Lanka Institute of Information Technology</p>
+                              <p>Faculty of Computing</p>
+                          </div>
+                      </div>
+                      <ul class="list-group list-group-flush">
+                          <li class="list-group-item">
+                            <a class="card-text mr-4" href="https://scholar.google.com/citations?user=6RUA9pUAAAAJ&hl=en" target="_blank">
+                              <i class="fab fa-google mr-2"></i>G-Scholar
+                          </a>
+                              <a class="card-text" href="mailto:nelum.a@sliit.lk">
+                                  <i class="fas fa-envelope-open-text mr-2"></i>E-Mail
+                              </a>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+          <!-- Team Members -->
+          <div class="row mt-sm-5" style="justify-content: center;">
+              <!-- Add more team members here as shown in the original content -->
+              <!-- Example: Group Leader -->
+              <div class="col-lg-3 col-md-4 col-sm-12">
+                  <div class="card about-us-card">
+                      <img src="images/pro.jpg" class="about-us-image" height="300px">
+                      <div class="card-body">
+                          <h5 class="card-title">Bandara K.M.V.T.</h5>
+                          <br>
+                          <span class="badge" style="background-color: #75A82B; color: white;">Group Leader</span>
+                          <div class="text-group">
+                              <p><strong>Undergraduate</strong></p>
+                              <p>Sri Lanka Institute of Information Technology</p>
+                              <p>Faculty of Computing</p>
+                          </div>
+                      </div>
+                      <ul class="list-group list-group-flush">
+                          <li class="list-group-item">
+                              <a class="card-text mr-4" href="https://www.linkedin.com/in/vihinsa-thejan-bandara/" target="_blank">
+                                  <i class="fab fa-linkedin-in mr-2"></i>LinkedIn
+                              </a>
+                              <a class="card-text" href="mailto:vihinsabandara@gmail.com">
+                                  <i class="fas fa-envelope-open-text mr-2"></i>E-Mail
+                              </a>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+              <!-- Repeat for other members -->
+               <div class="col-lg-3 col-md-4 col-sm-12">
+                  <div class="card about-us-card">
+                      <img src="images/avater.png" class="about-us-image" height="300px">
+                      <div class="card-body">
+                          <h5 class="card-title">Bandara R.M.D.L.</h5>
+                          <br>
+                          <span class="badge" style="background-color: #75A82B; color: white;">Group Member</span>
+                          <div class="text-group">
+                              <p><strong>Undergraduate</strong></p>
+                              <p>Sri Lanka Institute of Information Technology</p>
+                              <p>Faculty of Computing</p>
+                          </div>
+                      </div>
+                      <ul class="list-group list-group-flush">
+                          <li class="list-group-item">
+                              <a class="card-text mr-4" href="https://www.linkedin.com/in/dumindulakshanbandara" target="_blank">
+                                  <i class="fab fa-linkedin-in mr-2"></i>LinkedIn
+                              </a>
+                              <a class="card-text" href="mailto:dumindubandara969@gmail.com">
+                                  <i class="fas fa-envelope-open-text mr-2"></i>E-Mail
+                              </a>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+              <!-- Repeat for other members -->
+              <div class="col-lg-3 col-md-4 col-sm-12">
+                <div class="card about-us-card">
+                    <img src="images/JanithKau.jpg" class="about-us-image" height="300px">
+                    <div class="card-body">
+                        <h5 class="card-title">Chandrasena H.M.K.G.J.K.</h5>
+                        <br>
+                        <span class="badge" style="background-color: #75A82B; color: white;">Group Member</span>
+                        <div class="text-group">
+                            <p><strong>Undergraduate</strong></p>
+                            <p>Sri Lanka Institute of Information Technology</p>
+                            <p>Faculty of Computing</p>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="footer-section">
-                    <h5>Quick Links</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#home" class="footer-link">Home</a></li>
-                        <li><a href="#features" class="footer-link">Features</a></li>
-                        <li><a href="#timeline" class="footer-link">Timeline</a></li>
-                        <li><a href="#team" class="footer-link">Team</a></li>
-                        <li><a href="#contact" class="footer-link">Contact</a></li>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <a class="card-text mr-4" href="" target="_blank">
+                                <i class="fab fa-linkedin-in mr-2"></i>LinkedIn
+                            </a>
+                            <a class="card-text" href="mailto:janithkbusiness@gmail.com">
+                                <i class="fas fa-envelope-open-text mr-2"></i>E-Mail
+                            </a>
+                        </li>
                     </ul>
                 </div>
-                
-                <div class="footer-section">
-                    <h5>Resources</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#" class="footer-link">Documentation</a></li>
-                        <li><a href="#" class="footer-link">Research Paper</a></li>
-                        <li><a href="#" class="footer-link">Project Reports</a></li>
-                        <li><a href="#" class="footer-link">Presentations</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h5>Contact Info</h5>
-                    <p style="color: #cbd5e1;">
-                        <i class="fas fa-envelope me-2"></i>
-                        vihinsabandara@gmail.com
-                    </p>
-                    <p style="color: #cbd5e1;">
-                        <i class="fas fa-university me-2"></i>
-                        SLIIT - Faculty of Computing
-                    </p>
-                </div>
             </div>
-            
-            <div class="border-top border-secondary pt-3 mt-3 text-center">
-                <p style="color: #94a3b8; margin: 0;">
-                    &copy; 2024 EcoCycle Explorer Team. All rights reserved. | 
-                    Built with <i class="fas fa-heart" style="color: var(--primary-color);"></i> at SLIIT
-                </p>
+            <!-- Repeat for other members -->
+            <div class="col-lg-3 col-md-4 col-sm-12">
+              <div class="card about-us-card">
+                  <img src="images/banner.png" class="about-us-image" height="300px">
+                  <div class="card-body">
+                      <h5 class="card-title">Kumara M.G.S.D.</h5>
+                      <br>
+                      <span class="badge" style="background-color: #75A82B; color: white;">Group Member</span>
+                      <div class="text-group">
+                          <p><strong>Undergraduate</strong></p>
+                          <p>Sri Lanka Institute of Information Technology</p>
+                          <p>Faculty of Computing</p>
+                      </div>
+                  </div>
+                  <ul class="list-group list-group-flush">
+                      <li class="list-group-item">
+                          <a class="card-text mr-4" href="https://www.linkedin.com/in/vihinsa-thejan-bandara/" target="_blank">
+                              <i class="fab fa-linkedin-in mr-2"></i>LinkedIn
+                          </a>
+                          <a class="card-text" href="mailto:vihinsabandara@gmail.com">
+                              <i class="fas fa-envelope-open-text mr-2"></i>E-Mail
+                          </a>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+<!-- Promo Banner -->
+<section id="banner" class="main-sections">
+  <div class="promo-banner">
+      <div class="container">
+          <div class="section-center">
+              <div class="section-figure">
+                  <img src="images/Icon.png" width="10%">
+              </div>
+          </div>
+          <h2 class="promo-banner-title">Download Now!</h2>
+          <p class="promo-banner-text">EcoCycle Explorer mobile application is now available for download on Google Play. Click below to get the app now!</p>
+          <div class="section-center">
+              <div class="section-figure">
+                  <a href="app-release.apk" download>
+                      <img src="images/playstore.png" width="15%">
+                  </a>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+
+      <!-- Contact Us -->
+      <section id="contact" class="main-sections" style="background-color:#FDFEFE">
+        <div class="container">
+            <h5 class="section-headings">Contact Us</h5>
+            <div class="sub-section">
+                <h2>Get in Touch</h2>
+                <div class="row  mt-sm-5">
+                  <div class="col-md-6 col-sm-12 contact-form">
+                    <form action="MAILTO:tharushaperera6199@gmail.com" method="POST" enctype="text/plain">
+                      <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="John Doe">
+                      </div>
+                      <div class="form-group">
+                        <label for="email">Email address</label>
+                        <input type="email" class="form-control" id="email" placeholder="name@example.com">
+                      </div>
+                      <div class="form-group">
+                        <label for="message">Message or Query</label>
+                        <textarea class="form-control" id="message" rows="5"></textarea>
+                      </div>
+                      <button type="submit" class="btn btncolorgradient	">Submit</button>
+                    </form>
+                  </div>
+                  <div class="col-md-6 col-sm-12 contact-details">
+                    <div>
+                      <p><strong>Contact Details</strong></p>
+                      <p>For further queries please reach us at <a href="mailto:vihinsabandara@gmail.com">vihinsabandara@gmail.com</a></p>
+                      <p>Hope this project helped you in some manner. Thank you!</p>
+                      <p>-Team EcoCycle Explorer	</p>
+                    </div>
+                  </div>
+                </div>
             </div>
         </div>
-    </footer>
+      </section>
+      <!-- Scripts -->
+    <script src="js/jquery-3.5.1.slim.min.js"></script>
+    <script src="js/all.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <script>
-        // Scroll Progress Bar
-        window.addEventListener('scroll', () => {
-            const scrollProgress = document.querySelector('.scroll-progress');
-            const scrollTop = document.documentElement.scrollTop;
-            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrollPercent = (scrollTop / scrollHeight) * 100;
-            scrollProgress.style.width = scrollPercent + '%';
-        });
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Active nav link highlighting
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('section[id]');
-            const navLinks = document.querySelectorAll('.nav-link');
-            
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (window.scrollY >= sectionTop - 200) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + current) {
-                    link.classList.add('active');
-                }
-            });
-        });
-
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-fade-in');
-                }
-            });
-        }, observerOptions);
-
-        // Observe elements for animation
-        document.querySelectorAll('.feature-card, .timeline-content, .team-card').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Form submission
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your message! We will get back to you soon.');
-        });
-    </script>
-</body>
-</html>
+</body></html>
