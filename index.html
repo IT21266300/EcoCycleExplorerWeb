@@ -9,12 +9,266 @@
     <meta name="keywords" content="EcoCycle Explorer, Travel Planning, Sri Lanka, AI-powered travel, personalized travel, local tours, cultural travel, travel app">
     <meta name="author" content="EcoCycle Explorer Travels (Pvt) Ltd">
     <link rel="icon" type="image/x-icon" href="images/Icon.ico">
+        <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
     <title>EcoCycle Explorer</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem 0;
+        }
+
+        .research-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffffff, #f8f9ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 300;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .objectives-container {
+            position: relative;
+        }
+
+        .objective-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: slideUp 0.6s ease forwards;
+        }
+
+        .objective-card:nth-child(1) { animation-delay: 0.1s; }
+        .objective-card:nth-child(2) { animation-delay: 0.2s; }
+        .objective-card:nth-child(3) { animation-delay: 0.3s; }
+        .objective-card:nth-child(4) { animation-delay: 0.4s; }
+        .objective-card:nth-child(5) { animation-delay: 0.5s; }
+
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .objective-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .objective-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #75A82B, #9BC53D);
+            border-radius: 24px 24px 0 0;
+        }
+
+        .card-content {
+            display: flex;
+            align-items: flex-start;
+            gap: 2rem;
+        }
+
+        .icon-container {
+            flex-shrink: 0;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #75A82B, #9BC53D);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(117, 168, 43, 0.3);
+            position: relative;
+        }
+
+        .icon-container::after {
+            content: '';
+            position: absolute;
+            inset: 2px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.05));
+            border-radius: 18px;
+            pointer-events: none;
+        }
+
+        .icon-container i {
+            font-size: 2rem;
+            color: white;
+            z-index: 1;
+        }
+
+        .text-content {
+            flex: 1;
+        }
+
+        .objective-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .objective-description {
+            font-size: 1rem;
+            color: #4a5568;
+            line-height: 1.7;
+            font-weight: 400;
+        }
+
+        .decorative-line {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 60px;
+            background: linear-gradient(to bottom, transparent, rgba(117, 168, 43, 0.3), transparent);
+            z-index: -1;
+        }
+
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .floating-circle {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-circle:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-circle:nth-child(2) {
+            top: 60%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .floating-circle:nth-child(3) {
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .card-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 1.5rem;
+            }
+            
+            .objective-card {
+                padding: 2rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .research-section {
+                padding: 0 1rem;
+            }
+        }
+
+        /* Pulse animation for icons */
+        .icon-container {
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 10px 30px rgba(117, 168, 43, 0.3); }
+            50% { box-shadow: 0 15px 40px rgba(117, 168, 43, 0.5); }
+        }
+
+        .objective-card:nth-child(even) .card-content {
+            flex-direction: row-reverse;
+        }
+
+        .objective-card:nth-child(even) .text-content {
+            text-align: right;
+        }
+
+        @media (max-width: 768px) {
+            .objective-card:nth-child(even) .card-content {
+                flex-direction: column;
+            }
+            
+            .objective-card:nth-child(even) .text-content {
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 <body style="background-color: #E9F7EF">
     <!-- NavBar -->
@@ -216,119 +470,90 @@
 </div>
 
 <!-- Research Objectives -->
-<div id="research_objectives" class="sub-section">
-  <div class="container">
-      <h2 class="pb-5 pt-5 text-center mb-5 display-5">Research Objectives</h2>
-      <!-- First Content Section -->
-      <div class="row align-items-center connecting-lines d-flex">
-          <div class="col-2 text-center bottom d-inline-flex justify-content-center align-items-center">
-              <div class="circle font-weight-bold"><i class="fa fa-star"></i></div>
-          </div>
-          <div class="col-6">
-              <h4 style="color: #75A82B;">Develop AI-Powered Route Optimization Algorithms</h4>
-              <p style="text-align: justify;">
-                  Create algorithms that optimize bicycle routes based on real-time data, user preferences, and environmental factors. By integrating machine learning models, the system will ensure safe, efficient, and sustainable travel experiences.
-              </p>
-          </div>
-      </div>
-      <!-- Path Line -->
-      <div class="row timeline_s">
-          <div class="col-2">
-              <div class="corner top-right"></div>
-          </div>
-          <div class="col-8">
-              <hr>
-          </div>
-          <div class="col-2">
-              <div class="corner left-bottom"></div>
-          </div>
-      </div>
-      <!-- Second Content Section -->
-      <div class="row align-items-center justify-content-end connecting-lines d-flex">
-          <div class="col-6 text-right">
-              <h4 style="color: #75A82B;">Enhance Safety with Real-Time Hazard Detection</h4>
-              <p style="text-align: justify;">
-                  Implement AI-driven hazard detection systems to analyze road conditions and provide timely alerts to cyclists. This feature ensures safer navigation and proactive risk management.
-              </p>
-          </div>
-          <div class="col-2 text-center full d-inline-flex justify-content-center align-items-center">
-              <div class="circle font-weight-bold"><i class="fa fa-star"></i></div>
-          </div>
-      </div>
-      <!-- Path Line -->
-      <div class="row timeline_s">
-          <div class="col-2">
-              <div class="corner right-bottom"></div>
-          </div>
-          <div class="col-8">
-              <hr>
-          </div>
-          <div class="col-2">
-              <div class="corner top-left"></div>
-          </div>
-      </div>
-      <!-- Third Content Section -->
-      <div class="row align-items-center connecting-lines d-flex">
-          <div class="col-2 text-center full d-inline-flex justify-content-center align-items-center">
-              <div class="circle font-weight-bold"><i class="fa fa-star"></i></div>
-          </div>
-          <div class="col-6">
-              <h4 style="color: #75A82B;">Promote Sustainability and Cultural Tourism</h4>
-              <p style="text-align: justify;">
-                  Integrate cultural insights and eco-tourism elements into the application. Highlight lesser-known destinations and promote sustainable travel practices to enrich the tourism experience and support local communities.
-              </p>
-          </div>
-      </div>
-  </div>
-</div>
-		   <!-- Path Line -->
-<div class="row timeline_s">
-  <div class="col-2">
-      <div class="corner top-right"></div>
-  </div>
-  <div class="col-8">
-      <hr>
-  </div>
-  <div class="col-2">
-      <div class="corner left-bottom"></div>
-  </div>
-</div>
-<!-- Second Content Section -->
-<div class="row align-items-center justify-content-end connecting-lines d-flex">
-  <div class="col-6 text-right">
-      <h4 style="color: #75A82B;">Sentiment Analysis of Hotel Reviews for Personalized Recommendations</h4>
-      <p style="text-align: justify;">
-          This objective focuses on utilizing NLP techniques to analyze user-generated reviews. The system extracts valuable insights and aligns them with user preferences for recommending accommodations, ensuring higher satisfaction. Sentiment analysis enables personalized suggestions, such as family-friendly, budget, or luxury hotels, tailored to individual expectations.
-      </p>
-  </div>
-  <div class="col-2 text-center full d-inline-flex justify-content-center align-items-center">
-      <div class="circle font-weight-bold"><i class="fa fa-star"></i></div>
-  </div>
-</div>
+<div class="floating-elements">
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+    </div>
 
-<!-- Path Line -->
-<div class="row timeline_s">
-  <div class="col-2">
-      <div class="corner right-bottom"></div>
-  </div>
-  <div class="col-8">
-      <hr>
-  </div>
-  <div class="col-2">
-      <div class="corner top-left"></div>
-  </div>
-</div>
-<div class="row align-items-center connecting-lines d-flex">
-  <div class="col-2 text-center full d-inline-flex justify-content-center align-items-center">
-      <div class="circle font-weight-bold"><i class="fa fa-star"></i></div>
-  </div>
-  <div class="col-6">
-      <h4 style="color: #75A82B;">Develop a Location-based Voice Navigation System</h4>
-      <p style="text-align: justify;">
-        The technology enriches travel by offering detailed landmark descriptions, highlighting cultural, historical, and scenic significance to transform journeys into informative adventures.
-      </p>
-  </div>
-</div>
+    <section class="research-section">
+        <div class="section-header">
+            <h2 class="section-title">Research Objectives</h2>
+            <p class="section-subtitle">Pioneering the future of AI-powered cycling and tourism through innovative research and development</p>
+        </div>
+
+        <div class="objectives-container">
+            <div class="objective-card">
+                <div class="card-content">
+                    <div class="icon-container">
+                        <i class="fas fa-route"></i>
+                    </div>
+                    <div class="text-content">
+                        <h4 class="objective-title">Develop AI-Powered Route Optimization Algorithms</h4>
+                        <p class="objective-description">
+                            Create algorithms that optimize bicycle routes based on real-time data, user preferences, and environmental factors. By integrating machine learning models, the system will ensure safe, efficient, and sustainable travel experiences.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="objective-card">
+                <div class="card-content">
+                    <div class="icon-container">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="text-content">
+                        <h4 class="objective-title">Enhance Safety with Real-Time Hazard Detection</h4>
+                        <p class="objective-description">
+                            Implement AI-driven hazard detection systems to analyze road conditions and provide timely alerts to cyclists. This feature ensures safer navigation and proactive risk management.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="objective-card">
+                <div class="card-content">
+                    <div class="icon-container">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="text-content">
+                        <h4 class="objective-title">Promote Sustainability and Cultural Tourism</h4>
+                        <p class="objective-description">
+                            Integrate cultural insights and eco-tourism elements into the application. Highlight lesser-known destinations and promote sustainable travel practices to enrich the tourism experience and support local communities.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="objective-card">
+                <div class="card-content">
+                    <div class="icon-container">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="text-content">
+                        <h4 class="objective-title">Sentiment Analysis of Hotel Reviews for Personalized Recommendations</h4>
+                        <p class="objective-description">
+                            This objective focuses on utilizing NLP techniques to analyze user-generated reviews. The system extracts valuable insights and aligns them with user preferences for recommending accommodations, ensuring higher satisfaction. Sentiment analysis enables personalized suggestions, such as family-friendly, budget, or luxury hotels, tailored to individual expectations.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="objective-card">
+                <div class="card-content">
+                    <div class="icon-container">
+                        <i class="fas fa-microphone"></i>
+                    </div>
+                    <div class="text-content">
+                        <h4 class="objective-title">Develop a Location-based Voice Navigation System</h4>
+                        <p class="objective-description">
+                            The technology enriches travel by offering detailed landmark descriptions, highlighting cultural, historical, and scenic significance to transform journeys into informative adventures.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 <!-- Methodology -->
 <div id="methodology" class="sub-section mx-5">
