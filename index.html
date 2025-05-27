@@ -352,34 +352,121 @@
 </div>
 
 <!-- Methodology -->
-<div id="methodology" class="sub-section mx-5">
-  <h2>Methodology</h2>
-  <div class="row">
-      <div id="project-scope-left" class="col-md-6 col-sm-12 pt-lg-5 d-flex justify-content-center align-items-center">
-          <div class="section-left">
-              <div class="section-figure">
-                  <img src="images/mainD.png" width="100%" alt="System Architecture">
-                  <p class="text-center">Figure 1. High-Level Architecture of the system.</p>
-              </div>
+<div id="methodology" class="sub-section mx-5 my-5">
+  <div class="methodology-header text-center mb-5">
+    <h2 class="display-4 mb-3" style="color: #75A82B; font-weight: 700;">Methodology</h2>
+    <p class="lead text-muted">Our comprehensive approach to building an AI-powered cycling tourism platform</p>
+  </div>
+  
+  <div class="row align-items-center">
+    <!-- System Architecture Image -->
+    <div class="col-lg-6 col-md-12 mb-4">
+      <div class="methodology-image-container">
+        <div class="image-wrapper position-relative">
+          <img src="images/Picture111.png" class="img-fluid rounded shadow-lg" alt="System Architecture" style="border: 3px solid #75A82B;">
+          <div class="image-overlay position-absolute w-100 h-100 d-flex align-items-center justify-content-center" style="top: 0; left: 0; background: rgba(117, 168, 43, 0.1); opacity: 0; transition: opacity 0.3s ease;">
+            <i class="fas fa-search-plus fa-2x text-white"></i>
           </div>
+        </div>
+        <p class="text-center mt-3 font-weight-bold" style="color: #75A82B;">
+          <i class="fas fa-chart-network mr-2"></i>Figure 1. High-Level Architecture of the EcoCycle Explorer System
+        </p>
       </div>
-      <div id="project-scope-right" class="col-md-6 col-sm-12 pt-lg-5 justify-text">
-          <p>
-              The EcoCycle Explorer system is designed around four key components:
-              <br><br>
-              <b>1. Optimal Route Planning:</b> Personalized travel routes are generated using machine learning models like KNN and Ant Colony Optimization. Data is sourced from APIs and cleaned for accuracy, integrating Google Maps API for dynamic travel times and costs.
-              <br><br>
-              <b>2. Targeted Promotions:</b> Personalized destination promotions are built based on user calendars, seasonal preferences, and NLP models, delivering real-time notifications about relevant activities and accommodations.
-              <br><br>
-              <b>3. Knowledge Base with AR Tour Guide:</b> Augmented Reality experiences enhance destination engagement. AR visualizations provide cultural insights and support OCR for translating inscriptions, offering a rich, interactive experience.
-              <br><br>
-              <b>4. Sentiment-Based Comment Personalization:</b> NLP-powered analysis of hotel reviews provides insights into user preferences. This data is processed for accuracy and utilized to align suggestions with customer needs, improving satisfaction and business strategies.
+    </div>
+    
+    <!-- Methodology Content -->
+    <div class="col-lg-6 col-md-12">
+      <div class="methodology-content">
+        <div class="intro-text mb-4">
+          <p class="lead">The EcoCycle Explorer system is architected around four intelligent components that work seamlessly together:</p>
+        </div>
+        
+        <!-- Component Cards -->
+        <div class="components-container">
+          <!-- Component 1 -->
+          <div class="component-card mb-4 p-4 rounded shadow-sm" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9f7ef 100%); border-left: 4px solid #75A82B;">
+            <div class="d-flex align-items-start">
+              <div class="component-icon mr-3 mt-1">
+                <i class="fas fa-route fa-2x" style="color: #75A82B;"></i>
+              </div>
+              <div class="component-content">
+                <h5 class="component-title mb-2" style="color: #2c3e50; font-weight: 600;">
+                  <span class="component-number" style="color: #75A82B;">1.</span> Optimal Route Planning
+                </h5>
+                <p class="component-description mb-0" style="font-size: 0.95rem; line-height: 1.6;">
+                  Personalized travel routes generated using advanced machine learning models including KNN and Ant Colony Optimization. Integrates real-time data from Google Maps API for dynamic travel times and cost optimization.
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Component 2 -->
+          <div class="component-card mb-4 p-4 rounded shadow-sm" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9f7ef 100%); border-left: 4px solid #75A82B;">
+            <div class="d-flex align-items-start">
+              <div class="component-icon mr-3 mt-1">
+                <i class="fas fa-bullhorn fa-2x" style="color: #75A82B;"></i>
+              </div>
+              <div class="component-content">
+                <h5 class="component-title mb-2" style="color: #2c3e50; font-weight: 600;">
+                  <span class="component-number" style="color: #75A82B;">2.</span> Targeted Promotions
+                </h5>
+                <p class="component-description mb-0" style="font-size: 0.95rem; line-height: 1.6;">
+                  AI-driven promotional system leveraging user calendars, seasonal preferences, and NLP models to deliver personalized destination recommendations and real-time activity notifications.
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Component 3 -->
+          <div class="component-card mb-4 p-4 rounded shadow-sm" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9f7ef 100%); border-left: 4px solid #75A82B;">
+            <div class="d-flex align-items-start">
+              <div class="component-icon mr-3 mt-1">
+                <i class="fas fa-vr-cardboard fa-2x" style="color: #75A82B;"></i>
+              </div>
+              <div class="component-content">
+                <h5 class="component-title mb-2" style="color: #2c3e50; font-weight: 600;">
+                  <span class="component-number" style="color: #75A82B;">3.</span> AR Knowledge Base & Tour Guide
+                </h5>
+                <p class="component-description mb-0" style="font-size: 0.95rem; line-height: 1.6;">
+                  Immersive Augmented Reality experiences with cultural insights, OCR-powered inscription translation, and interactive visualizations for enhanced destination engagement.
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Component 4 -->
+          <div class="component-card mb-4 p-4 rounded shadow-sm" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9f7ef 100%); border-left: 4px solid #75A82B;">
+            <div class="d-flex align-items-start">
+              <div class="component-icon mr-3 mt-1">
+                <i class="fas fa-heart fa-2x" style="color: #75A82B;"></i>
+              </div>
+              <div class="component-content">
+                <h5 class="component-title mb-2" style="color: #2c3e50; font-weight: 600;">
+                  <span class="component-number" style="color: #75A82B;">4.</span> Sentiment-Based Personalization
+                </h5>
+                <p class="component-description mb-0" style="font-size: 0.95rem; line-height: 1.6;">
+                  Advanced NLP-powered sentiment analysis of hotel reviews and user feedback to provide highly personalized accommodation suggestions that align with individual preferences.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Call to Action -->
+        <div class="methodology-cta mt-4 p-3 rounded text-center" style="background: rgba(117, 168, 43, 0.1); border: 1px dashed #75A82B;">
+          <p class="mb-2" style="color: #2c3e50; font-weight: 500;">
+            <i class="fas fa-lightbulb mr-2" style="color: #75A82B;"></i>
+            Interested in the technical details?
           </p>
+          <a href="#tech_used" class="btn btn-outline-success btn-sm">
+            Explore Technologies Used <i class="fas fa-arrow-right ml-1"></i>
+          </a>
+        </div>
       </div>
+    </div>
   </div>
 </div>
 
-<!-- Technologies Used -->
 <!-- Technologies Used -->
 <div id="tech_used" class="sub-section mx-5">
   <h2>Technologies Used</h2>
@@ -655,7 +742,7 @@
                         
                       </div>
                       <ul class="download-items list-group list-group-flush">
-                        <li class="list-group-item">Group<a href="https://mysliit-my.sharepoint.com/:f:/g/personal/it21057724_my_sliit_lk/EsmS1I-kjqNOna2NPzwtCtYB54N2mPHFxrqmW1RpZbdfFg?e=KnEr6r" target="_blank">Download</a></li>
+                        <li class="list-group-item">Group<a href="https://mysliit-my.sharepoint.com/:b:/g/personal/it21266300_my_sliit_lk/ETxJX74ttWtLmGpy1O2c460BKGEeMfsITncWuv61TA11Ug?e=8h5JQR" target="_blank">Download</a></li>
                       </ul>
 
                     </div>
@@ -834,7 +921,7 @@
             <!-- Repeat for other members -->
             <div class="col-lg-3 col-md-4 col-sm-12">
               <div class="card about-us-card">
-                  <img src="images/banner.png" class="about-us-image" height="300px">
+                  <img src="images/dana.jpg" class="about-us-image" height="300px">
                   <div class="card-body">
                       <h5 class="card-title">Kumara M.G.S.D.</h5>
                       <br>
@@ -847,10 +934,10 @@
                   </div>
                   <ul class="list-group list-group-flush">
                       <li class="list-group-item">
-                          <a class="card-text mr-4" href="https://www.linkedin.com/in/vihinsa-thejan-bandara/" target="_blank">
+                          <a class="card-text mr-4" href="https://www.linkedin.com/in/dhananjaya-kumara-39766721b/" target="_blank">
                               <i class="fab fa-linkedin-in mr-2"></i>LinkedIn
                           </a>
-                          <a class="card-text" href="mailto:vihinsabandara@gmail.com">
+                          <a class="card-text" href="mailto:dhananjayakumara1999@gmail.com">
                               <i class="fas fa-envelope-open-text mr-2"></i>E-Mail
                           </a>
                       </li>
@@ -921,6 +1008,51 @@
             </div>
         </div>
       </section>
+      <style>
+.methodology-image-container:hover .image-overlay {
+  opacity: 1 !important;
+}
+
+.component-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(117, 168, 43, 0.2);
+}
+
+.component-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(117, 168, 43, 0.15) !important;
+}
+
+.component-number {
+  font-size: 1.2em;
+  font-weight: 700;
+}
+
+.methodology-header {
+  position: relative;
+}
+.methodology-header::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #75A82B, #a8d65a);
+  border-radius: 2px;
+}
+
+@media (max-width: 768px) {
+  .component-card {
+    margin-bottom: 1rem !important;
+  }
+  
+  .methodology-content {
+    margin-top: 2rem;
+  }
+}
+</style>
       <!-- Scripts -->
     <script src="js/jquery-3.5.1.slim.min.js"></script>
     <script src="js/all.min.js"></script>
